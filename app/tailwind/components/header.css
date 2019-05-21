@@ -1,12 +1,13 @@
 .header{
   @apply flex justify-between .bg-green text-white;
+	
 }
 
 .header-info{
 		@apply flex .flex-wrap ;
 }
 .header-title{
-  @apply .m-4 .self-center;
+  @apply .m-4 .self-center bg-green;
 }
 
 .header-slogan{
@@ -14,16 +15,32 @@
 }
 
 .logo{
-  @apply .hidden;
-		height : 150px;
-		width : 225px;
+		@apply m-4;
+		height : 3rem;
+		width : 3rem;
 }
 
+.navbar{
+	@apply .text-white .overflow-hidden;
+	max-height:0px;
+  transition-duration: 1.5s;
+}
+
+.navBtn{
+ @apply bg-green flex justify-center .text-2xl p-4; 
+}
+
+.navBtn:hover{
+ @apply bg-greenDarker;
+}
 
 @screen md{
   .logo{
     @apply  .block;
   }
+  .navbar{
+		max-height:1000px;
+	}
 }
 
 
