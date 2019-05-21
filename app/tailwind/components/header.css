@@ -7,11 +7,12 @@
 		@apply flex .flex-wrap ;
 }
 .header-title{
-  @apply .m-4 .self-center bg-green;
+  @apply .m-4 .self-center;
 }
 
 .header-slogan{
-  @apply .hidden;
+  @apply hidden .bg-green .p-4;
+	font-size: 1.5rem;
 }
 
 .logo{
@@ -21,7 +22,7 @@
 }
 
 .navbar{
-	@apply .text-white .overflow-hidden;
+	@apply .text-white .overflow-hidden .w-full bg-green;
 	max-height:0px;
   transition-duration: 1.5s;
 }
@@ -35,17 +36,16 @@
 }
 
 @screen md{
-  .logo{
-    @apply  .block;
-  }
   .navbar{
-		max-height:1000px;
+	 @apply flex flex-row .justify-between;	
+	 max-height:1000px;
+		
 	}
 }
 
 
 @screen lg{
   .header-slogan{
-    @apply .text-white .inline;
+    @apply .text-white block;
   }
 }
