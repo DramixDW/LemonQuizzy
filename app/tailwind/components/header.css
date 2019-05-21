@@ -1,0 +1,34 @@
+.header{
+  @apply flex justify-between .bg-green text-white;
+}
+
+.header-info{
+		@apply flex .flex-wrap ;
+}
+.header-title{
+  @apply .m-4 .self-center;
+}
+
+.header-slogan{
+  @apply .hidden;
+}
+
+.logo{
+  @apply .hidden;
+		height : 150px;
+		width : 225px;
+}
+
+
+@screen md{
+  .logo{
+    @apply  .block;
+  }
+}
+
+
+@screen lg{
+  .header-slogan{
+    @apply .text-white .inline;
+  }
+}
