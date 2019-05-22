@@ -48,5 +48,32 @@ module.exports = function(environment) {
     // here you can enable a production-specific feature
   }
 
+
+
+  ENV["ember-simple-auth"] = {
+    authorizer: "authorizer:token",
+    crossOriginWhitelist: ["*"],
+    //routeAfterAuthentication: "profile",
+    authenticationRoute: "login"
+  };
+
+  ENV["ember-simple-auth-token"] = {
+    serverTokenEndpoint: ENV['apiPath']+'/'+ENV['apiNameSpace']+'/auth/login',
+    identificationField: 'email',
+    passwordField: 'password',
+    tokenPropertyName: 'token.accessToken',
+    refreshTokenPropertyName: 'token.refreshToken',
+    authorizationPrefix: 'Bearer ',
+    authorizationHeaderName: 'Authorization',
+    headers: {
+      'Accept': 'application/vnd.api+json',
+      'Content-Type': 'application/vnd.api+json',
+    },
+    serverTokenRefreshEndpoint: ENV['apiPath']+'/'+ENV['apiNameSpace']+'/auth/refresh-token',
+    refreshAccessTokens: true,
+    refreshLeeway: 15
+  };
+
+
   return ENV;
 };
