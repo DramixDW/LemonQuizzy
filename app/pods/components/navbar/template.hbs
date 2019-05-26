@@ -1,27 +1,58 @@
-<div class="header">
+<div class="">
+	<div class="header">
 		<div class="flex justify-around">
-		<img class="logo" src="assets/images/logo.png" alt="logo" />
-		<h1 class="header-title">
+			{{#link-to "index" }}
+			<img class="logo" src="assets/images/logo.png" alt="logo" />
+			{{/link-to }}
+			{{#link-to "index" }}
+			<h1 class="header-title">
 				Lemon quizzy
-		</h1>
+			</h1>
+			{{/link-to }}
 		</div>
 		<div class="block lg:hidden">
-			<button {{action "displayMenu" }} id="btn" class="flex  m-4 items-center px-3 py-2 border rounded text-teal-200 border-teal-400 text-white border-white">
-				<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+			<button {{action "displayMenu" }} id="btn"
+				class="flex  m-4 items-center px-3 py-2 border rounded text-teal-200 border-teal-400 text-white border-white">
+				<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>Menu</title>
+					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+				</svg>
 			</button>
 		</div>
-</div>
-<nav id="nav" class="navbar">
+	</div>
+	<nav id="nav" class="navbar">
 		<div class="header-slogan">
 			<p>
 				Studying is now easy peasy lemon quizzy !
-			</p>		
+			</p>
 		</div>
 		<div class="md:flex md:justify-end">
-		<p class="navBtn"> Questionnaires</p>
-		<p class="navBtn"> Forum </p>
-		<p class="navBtn"> Contact </p>
-		<p class="navBtn"> Sign in </p>
-		<p class="navBtn"> Sign up </p>
+			<p class="navBtn">
+				{{#link-to "sign-in"}}Questionnaires {{/link-to }}
+			</p>
+			<p class="navBtn">
+				{{#link-to "sign-in" user}}Forum {{/link-to }}
+			</p>
+			<p class="navBtn">
+				{{#link-to "sign-in" user}}Contact {{/link-to }}
+			</p>
+			
+			<p class="navBtn">
+				{{#if session.isAuthenticated}}
+				  {{#link-to "sign-in" user}}Messagerie {{/link-to }}
+				{{else}}
+				  {{#link-to "sign-in" user}}Inscription {{/link-to }}
+			    {{/if}}
+			</p>
+			<p class="navBtn">
+				{{#if session.isAuthenticated}}
+				  {{#link-to "sign-in" user}}Profile {{/link-to }}
+				{{else}}
+				  {{#link-to "sign-in" user}}Connexion {{/link-to }}
+			    {{/if}}
+			</p>
+			
 		</div>
-</nav>
+	</nav>
+</div>
+

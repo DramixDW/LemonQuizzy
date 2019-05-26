@@ -1,6 +1,10 @@
 .header{
-  @apply flex justify-between .bg-green text-white;
+  @apply flex justify-between .bg-green text-white w-full;
 	
+}
+
+.header a{
+		@apply .text-white .no-underline ;
 }
 
 .header-info{
@@ -25,6 +29,10 @@
 	@apply .text-white .overflow-hidden .w-full bg-green;
 	max-height:0px;
   transition-duration: 1.5s;
+}
+
+.navbar a{
+	@apply .text-white .no-underline ;
 }
 
 .navBtn{
