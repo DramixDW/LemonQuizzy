@@ -28,31 +28,33 @@
 		</div>
 		<div class="md:flex md:justify-end">
 			<p class="navBtn">
-				{{#link-to "sign-in"}}Questionnaires {{/link-to }}
+				{{#link-to "sign-in" }}Questionnaires {{/link-to }}
 			</p>
 			<p class="navBtn">
-				{{#link-to "sign-in" user}}Forum {{/link-to }}
+				{{#link-to "sign-in" }}Forum {{/link-to }}
 			</p>
 			<p class="navBtn">
-				{{#link-to "sign-in" user}}Contact {{/link-to }}
+				{{#link-to "sign-in" }}Contact {{/link-to }}
 			</p>
-			
-			<p class="navBtn">
-				{{#if session.isAuthenticated}}
-				  {{#link-to "sign-in" user}}Messagerie {{/link-to }}
-				{{else}}
-				  {{#link-to "sign-in" user}}Inscription {{/link-to }}
-			    {{/if}}
-			</p>
+
 			<p class="navBtn">
 				{{#if session.isAuthenticated}}
-				  {{#link-to "sign-in" user}}Profile {{/link-to }}
+				{{#link-to "sign-in" }}Messagerie {{/link-to }}
 				{{else}}
-				  {{#link-to "sign-in" user}}Connexion {{/link-to }}
-			    {{/if}}
+				{{#link-to "sign-in" }}Inscription {{/link-to }}
+				{{/if}}
 			</p>
-			
+			<p class="navBtn">
+				{{#if session.isAuthenticated}}
+				{{#link-to "sign-in" }}Profile {{/link-to }}
+				{{else}}
+				{{#link-to "sign-in" }}Connexion {{/link-to }}
+				{{/if}}
+			</p>
+			{{#if session.isAuthenticated}}
+				<button {{action "logout" }}  class="navBtn">Logout</button>
+			{{/if}}
+
 		</div>
 	</nav>
 </div>
-

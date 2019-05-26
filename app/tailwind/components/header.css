@@ -39,6 +39,10 @@
  @apply bg-green flex justify-center .text-2xl p-4; 
 }
 
+.navbar button{
+	@apply w-full text-white;
+}
+
 .navBtn:hover{
  @apply bg-greenDarker;
 }
