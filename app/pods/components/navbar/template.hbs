@@ -41,12 +41,12 @@
 				{{#if session.isAuthenticated}}
 				{{#link-to "sign-in" }}Messagerie {{/link-to }}
 				{{else}}
-				{{#link-to "sign-in" }}Inscription {{/link-to }}
+				{{#link-to "sign-up"}}Inscription {{/link-to }}
 				{{/if}}
 			</p>
 			<p class="navBtn">
 				{{#if session.isAuthenticated}}
-				{{#link-to "sign-in" }}Profile {{/link-to }}
+				{{#link-to "profile" }}Profile {{/link-to }}
 				{{else}}
 				{{#link-to "sign-in" }}Connexion {{/link-to }}
 				{{/if}}

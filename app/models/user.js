@@ -8,7 +8,6 @@ export default Model.extend({
     firstname: DS.attr('string'),
     password: DS.attr('string'),
     lastname: DS.attr('string'),
-    documents: DS.hasMany('document'),
     role: DS.attr('string'),
     'created-at': DS.attr('date'),
     'updated-at': DS.attr('date'),
