@@ -1,60 +1,58 @@
 <div class="">
-	<div class="header">
-		<div class="flex justify-around">
-			{{#link-to "index" }}
-			<img class="logo" src="assets/images/logo.png" alt="logo" />
-			{{/link-to }}
-			{{#link-to "index" }}
-			<h1 class="header-title">
-				Lemon quizzy
-			</h1>
-			{{/link-to }}
-		</div>
-		<div class="block lg:hidden">
-			<button {{action "displayMenu" }} id="btn"
-				class="flex  m-4 items-center px-3 py-2 border rounded text-teal-200 border-teal-400 text-white border-white">
-				<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-					<title>Menu</title>
-					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-				</svg>
-			</button>
-		</div>
-	</div>
-	<nav id="nav" class="navbar">
-		<div class="header-slogan">
-			<p>
-				Studying is now easy peasy lemon quizzy !
-			</p>
-		</div>
-		<div class="md:flex md:justify-end">
-			<p class="navBtn">
-				{{#link-to "sign-in" }}Questionnaires {{/link-to }}
-			</p>
-			<p class="navBtn">
-				{{#link-to "sign-in" }}Forum {{/link-to }}
-			</p>
-			<p class="navBtn">
-				{{#link-to "sign-in" }}Contact {{/link-to }}
-			</p>
-
-			<p class="navBtn">
-				{{#if session.isAuthenticated}}
-				{{#link-to "sign-in" }}Messagerie {{/link-to }}
-				{{else}}
-				{{#link-to "sign-up"}}Inscription {{/link-to }}
-				{{/if}}
-			</p>
-			<p class="navBtn">
-				{{#if session.isAuthenticated}}
-				{{#link-to "profile" }}Profile {{/link-to }}
-				{{else}}
-				{{#link-to "sign-in" }}Connexion {{/link-to }}
-				{{/if}}
-			</p>
-			{{#if session.isAuthenticated}}
-				<button {{action "logout" }}  class="navBtn">Logout</button>
-			{{/if}}
-
-		</div>
-	</nav>
+  <div class="header">
+    <div class="flex justify-around">
+      {{#link-to "index" }}
+        <img class="logo" src="assets/images/logo.png" alt="logo" >
+   {{/link-to }}
+      {{#link-to "index" }}
+        <h1 class="header-title">
+          Lemon quizzy
+        </h1>
+   {{/link-to }}
+    </div>
+    <div class="block lg:hidden">
+      <button {{action "displayMenu" }} id="btn"
+		class="flex  m-4 items-center px-3 py-2 border rounded text-teal-200 border-teal-400 text-white border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav id="nav" class="navbar">
+    <div class="header-slogan">
+      <p>
+        Studying is now easy peasy lemon quizzy !
+      </p>
+    </div>
+    <div class="md:flex md:justify-end">
+      <p class="navBtn">
+        {{#link-to "sign-in" }}Questionnaires {{/link-to }}
+      </p>
+      <p class="navBtn">
+        {{#link-to "sign-in" }}Forum {{/link-to }}
+      </p>
+      <p class="navBtn">
+        {{#link-to "sign-in" }}Contact {{/link-to }}
+      </p>
+      <p class="navBtn">
+        {{#if session.isAuthenticated}}
+          {{#link-to "sign-in" }}Messagerie {{/link-to }}
+        {{else}}
+          {{#link-to "sign-up"}}Inscription {{/link-to }}
+        {{/if}}
+      </p>
+      <p class="navBtn">
+        {{#if session.isAuthenticated}}
+          {{#link-to "profile" }}Profile {{/link-to }}
+        {{else}}
+          {{#link-to "sign-in" }}Connexion {{/link-to }}
+        {{/if}}
+      </p>
+      {{#if session.isAuthenticated}}
+        <button {{action "logout" }}  class="navBtn">Logout</button>
+      {{/if}}
+    </div>
+  </nav>
 </div>
