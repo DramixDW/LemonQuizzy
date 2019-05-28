@@ -24,7 +24,7 @@ export default {
 
 
   'green': '#45a41b',
-	'greenDarker' : '#338410',
+  'greenDarker': '#338410',
 
   'blue': '#1b8aa4',
 
@@ -32,5 +32,5 @@ export default {
   'purple': '#7a1ba4',
 
 
-  	
+
 };
