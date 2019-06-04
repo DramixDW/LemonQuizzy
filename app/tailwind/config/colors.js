@@ -31,6 +31,9 @@ export default {
 
   'purple': '#7a1ba4',
 
+  'redLighter':'#ffdddd',
+  'red':'#ff3838',
+
 
 
 };

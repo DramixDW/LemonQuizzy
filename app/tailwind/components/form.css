@@ -3,12 +3,16 @@
 }
 
 .form label{
-    @apply block .m-4 .text-xl;
+    @apply block .my-2 mx-3 .text-xl;
 }
 
 
 .form input{
-    @apply block .m-4 .border .border-black .rounded ;
+    @apply shadow appearance-none border rounded w-full py-2 px-3  mb-3 leading-tight  ;
+}
+
+.form input:focus{
+    @apply outline-none shadow-outline;
 }
 
 .formBtn{

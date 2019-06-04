@@ -1,0 +1,60 @@
+<div class="w-full ">
+  <div class=" flex justify-around text-white  bg-green">
+    <h3 class="my-2 py-2">
+      Profile
+    </h3>
+    <button class="my-2 py-2 px-4 bg-green text-white border border-greenDarker hover:bg-greenDarker">
+      {{#link-to "profile.edit" }}Edit {{/link-to }}
+    </button>
+  </div>
+  <img src="assets/images/profile.png" alt="profile pic" class="float-left pr-4">
+  <p class="profile-title">
+    Prénom
+  </p>
+  <p class="profile-input">
+    {{session.user.firstname}}
+  </p>
+  <p class="profile-title">
+    Nom de famille
+  </p>
+  <p class="profile-input">
+    {{session.user.lastname}}
+  </p>
+  <p class="profile-title">
+    Pseudo
+  </p>
+  <p class="profile-input">
+    {{session.user.username}}
+  </p>
+  <p class="profile-title">
+    E-mail
+  </p>
+  <p class="profile-input">
+    {{session.user.email}}
+  </p>
+  <p class="profile-title">
+    Profile crée le
+  </p>
+  <p class="profile-input">
+    {{moment-format session.user.created-at "MM/DD/YYYY" "YYYY-MM-DD"}}
+  </p>
+  <div class=" flex justify-around text-white  bg-green my-4">
+    <h3 class="my-2 py-2">
+      Changer de mot de passe
+    </h3>
+  </div>
+  <div class="error">{{errorMessage}}</div>
+  <div>
+    <form action=""  class="form" method="post">
+      <label for="oldPass">Ancien mot de passe</label>
+      {{input  required=true placeholder="Old password" type="password" value=oldPass class=""}}
+      <label for="newPassword">Nouveau mot de passe</label>
+      {{input required=true placeholder="New password" type="password" value=newPassword class=""}}
+      <label for="confirmPassword">Confirmation mot de passe</label>
+      {{input required=true placeholder="New password confirmation" type="password" value=confirmPassword class=""}}
+      <button {{action "changePass" }}  class="formBtn">
+        Changer de mot de passe
+	     </button>
+    </form>
+  </div>
+</div>

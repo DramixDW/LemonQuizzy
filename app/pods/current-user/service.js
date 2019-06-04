@@ -11,7 +11,7 @@ export default Service.extend({
     let userId = this.get('session.data.authenticated.user.data.id');
     if (!isEmpty(userId)) {
       return this.store.findRecord('user', userId).then((user) => {
-        this.set('user', user);
+        this.set('session.user', user);
       });
     } else {
       return RSVP.resolve();
