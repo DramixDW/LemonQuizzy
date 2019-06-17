@@ -12,7 +12,14 @@ Router.map(function() {
   this.route('profile', function() {
     this.route('edit');
   });
-  this.route('forum');
+  this.route('forum', function() {
+    this.route('topics',{path:'/:category_id'})
+  });
+  this.route('topic', function() {
+    this.route('index',{path:'/:topic_id'})
+    this.route('add',{path:'/add/:category_id'});
+    this.route('edit');
+  });
 });
 
 export default Router;

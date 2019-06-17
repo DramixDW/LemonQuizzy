@@ -1,3 +1,7 @@
+a{
+	@apply .text-white .no-underline ;
+}
+
 .header{
   @apply flex justify-between .bg-green text-white w-full;
 	
