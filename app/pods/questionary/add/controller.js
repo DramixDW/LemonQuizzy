@@ -19,8 +19,11 @@ export default Controller.extend({
                     "timer" : time
                 }
             });
-            quizz.save();
-            this.transitionToRoute(`/questionary/edit/${quizz.id}`); 
+            let nquizz;
+            quizz.save().then(data =>{
+                nquizz = data;
+                this.transitionToRoute(`/questionary/edit/${nquizz.id}`);
+            });
           }
       }
 });

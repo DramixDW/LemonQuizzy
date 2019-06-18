@@ -10,8 +10,9 @@ export default Controller.extend({
     },
     actions:{
         editPost(){
-            this.get('model').save();
-            this.transitionToRoute('/topic/2'); 
+            this.get('model').save().then(data =>{
+                history.back();
+            }); 
         }
     }
 });
