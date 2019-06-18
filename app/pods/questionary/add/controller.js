@@ -20,6 +20,7 @@ export default Controller.extend({
                 }
             });
             quizz.save();
+            this.transitionToRoute(`/questionary/edit/${quizz.id}`); 
           }
       }
 });

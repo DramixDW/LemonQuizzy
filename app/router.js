@@ -26,6 +26,7 @@ Router.map(function() {
   });
   this.route('questionary', function() {
     this.route('add');
+    this.route('edit',{path:'/edit/:questionary_id'});
   });
 });
 
