@@ -5,7 +5,7 @@
     </h3>
   </div>
   {{#each this.model as |category|}}
-    {{#link-to "forum.topics" category}}
+    {{#link-to "forum.topics" category.id}}
       <button class="w-full  border-2 border-t-0 p-4 border-blue hover:bg-grey">
         <h2 class="text-left">
           {{category.title}}

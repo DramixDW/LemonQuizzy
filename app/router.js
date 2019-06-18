@@ -24,7 +24,9 @@ Router.map(function() {
   this.route('post', function() {
     this.route('edit',{path:'/edit/:post_id'});
   });
-  this.route('questionnary');
+  this.route('questionary', function() {
+    this.route('add');
+  });
 });
 
 export default Router;

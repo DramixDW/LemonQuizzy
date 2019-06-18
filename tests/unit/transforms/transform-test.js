@@ -1,13 +1,12 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Model | result', function(hooks) {
+module('Unit | Transform | raw', function(hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let store = this.owner.lookup('service:store');
-    let model = store.createRecord('result', {});
-    assert.ok(model);
+    let transform = this.owner.lookup('transform:raw');
+    assert.ok(transform);
   });
 });
