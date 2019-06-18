@@ -20,6 +20,11 @@ Router.map(function() {
     this.route('add',{path:'/add/:category_id'});
     this.route('edit');
   });
+
+  this.route('post', function() {
+    this.route('edit',{path:'/edit/:post_id'});
+  });
+  this.route('questionnary');
 });
 
 export default Router;

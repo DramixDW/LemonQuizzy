@@ -5,13 +5,55 @@
     </h3>
   </div>
 </div>
-<div>
-  <p>
+<div class="w-full border-2 border-t-0 p-4 border-blue">
+  <p class="p-2">
     {{this.model.content}}
   </p>
-  <div>
-    <p>
+  <div class="flex justify-around border-t pt-2">
+    <p class="">
       {{this.model.user.username}}
-     </p>
-   </div>
-</div> 
+    </p>
+    <p>
+      Posté le : {{moment-format this.model.created-at "MM/DD/YYYY HH:mm" "YYYY-MM-DD"}}
+    </p>
+  </div>
+</div>
+{{#each this.model.posts as |post|}}
+ <div class="w-full border-2 border-t-0 p-4 border-blue">
+  <p class="p-2">
+    {{post.content}}
+  </p>
+  <div class="flex justify-around border-t pt-2">
+    <p class="">
+      {{post.user.username}}
+    </p>
+    <p>
+      Posté le : {{moment-format post.created-at "MM/DD/YYYY HH:mm" "YYYY-MM-DD"}}
+    </p>
+    {{#link-to "post.edit" post}}
+      <button class="bg-grey p-1">
+          Éditer
+      </button>
+    {{/link-to}}
+  </div>
+</div>
+{{/each}}
+{{#if session.isAuthenticated}}
+  <div class="border-2 border-t-0 border-blue text-center">
+    <h4 class="bg-blue p-4 text-white">
+      Écrivez une réponse     
+    </h4>
+    <form {{action "Answer" this.model on="submit"}} class="p-4">
+      {{textarea  placeholder="Hey, you should" rows="7" value=content class=""}}
+      <button type="submit "class="formBtn bg-blue">
+        Répondre
+      </button>
+    </form>
+  </div>
+{{else}}
+  <div class="border-2 border-t-0 p-4 border-blue text-center">
+    <p>
+      You should be connected in order to reply
+    </p>
+  </div>
+{{/if}}

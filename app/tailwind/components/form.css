@@ -16,7 +16,6 @@
 }
 
 .formBtn{
-    @apply .bg-green .text-white .p-2 .mt-4 .rounded .float-left;
-    margin-left : 135px;
+    @apply .bg-green .text-white .p-2 .rounded ;
 }
 

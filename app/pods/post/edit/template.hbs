@@ -1,0 +1,16 @@
+<div class="w-full ">
+  <div class=" flex justify-around text-white  bg-blue">
+    <h3 class="my-2 py-2">
+      Éditer votre poste
+    </h3>
+  </div>
+  <div>
+    <form {{action "editPost" on="submit"}}  class="form" method="post">
+      <label for="content">Votre poste</label>
+      {{textarea row="10"    value=(mut model.content) class=""}}
+      <button type="submit "class="formBtn bg-blue">
+        Éditer
+	     </button>
+    </form>
+  </div>
+</div>
