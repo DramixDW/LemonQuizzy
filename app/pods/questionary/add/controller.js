@@ -17,7 +17,7 @@ export default Controller.extend({
             let quizz = this.store.createRecord("questionary", {
                 title: this.get('title'),
                 options:{
-                    "timer" : this.time
+                    "timer" : this.get('time')
                 }
             });
             let nquizz;
