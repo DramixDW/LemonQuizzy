@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import {inject as service} from "@ember/service";
 
 export default Controller.extend({
     session:     service('session'),
@@ -11,11 +12,7 @@ export default Controller.extend({
         }
     },
       actions: {
-          changeQuestion(id) {
-              for(let i=0;i<this.model.questions.length;i++){
-                  this.setVisibility(`question-${question.id}`,'none');
-              }
-              this.setVisibility(`question-${id}`,'block');
+          changeQuestion() {
           }
       }
 });

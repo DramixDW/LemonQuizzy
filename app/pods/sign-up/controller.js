@@ -12,7 +12,7 @@ export default Controller.extend({
                 role: 'user',
                 password: this.get('password')
             });
-            user.save();
+            user.save({ adapterOptions: 'register' });
         }
     }
 });

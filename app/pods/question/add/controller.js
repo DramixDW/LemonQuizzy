@@ -55,7 +55,6 @@ export default Controller.extend({
                     }
                     break;  
             }
-            console.log(option)
             //let question_type =this.store.findRecord('question-type',this.typeId)
             let question = this.store.createRecord("question", {
                 title: this.get('title'),

@@ -10,7 +10,7 @@ export default Controller.extend({
     },
     actions:{
         editPost(){
-            this.get('model').save().then(data =>{
+            this.get('model').save().then( ()=>{
                 history.back();
             }); 
         }
