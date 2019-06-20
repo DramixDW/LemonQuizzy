@@ -27,6 +27,11 @@ Router.map(function() {
   this.route('questionary', function() {
     this.route('add');
     this.route('edit',{path:'/edit/:questionary_id'});
+    this.route('do',{path:'/:questionary_id'});
+  });
+
+  this.route('question', function() {
+    this.route('add',{path: '/question/add/:questionary_id'});
   });
 });
 

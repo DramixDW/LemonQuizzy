@@ -2,6 +2,14 @@
   <h3 class="text-center text-white  bg-green p-4">
     {{this.model.title}} Dashboard
   </h3>
-  <div>
+  <div class="flex bg-green justify-around p-4 text-white">
+    {{#link-to "question.add" this.model.id }}
+      <button class="border p-2 border-white text-white">
+        Ajouter une question
+      </button>
+    {{/link-to}}
+    <button class="border p-2 border-white text-white">
+      Éditer
+    </button>
   </div>
 </div>

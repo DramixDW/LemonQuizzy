@@ -1,0 +1,59 @@
+{{!--
+class:
+
+base
+normal
+qcm
+hole
+label
+math
+
+--}}
+
+<div>
+  <h3 class="text-center text-white  bg-green p-4">
+    Nouvelle question
+  </h3>
+  <div>
+    <form action="addQuizz"  class="" method="post">
+      <select onchange={{action "setSelection" value="target.value"}}>
+        <option disabled selected> -- type de question -- </option>
+        {{#each this.model as |type|}}
+          <option value={{type.id}}> {{type.name}} </option>
+        {{/each}}
+      </select>
+      {{!-- Part of the form common to all question type --}}
+      <label for="title" class="base">Question</label>
+      {{input  required=true placeholder="Have the americans walk on the moon ? " value=title class="base shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      <label for="good_answer_value" class="base">Point en cas de bonne réponse</label>
+      {{input  placeholder="2"  value=good_answer_value class="base shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
+      <label for="no_answer_value" class="base">Point en cas de non réponse</label>
+      {{input  placeholder="0"  value=no_answer_value class="base shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
+      <label for="bad_answer_value" class="base">Point en cas de mauvaise réponse</label>
+      {{input  placeholder="-2"  value=bad_answer_value class=" base shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
+      {{!-- Part of the form for normal question --}}
+      <label for="answer" class="normal">Réponse</label>
+      {{input  required=true placeholder="No :)" value=answer class="normal shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{!-- Part of the form for the QCM question type --}}
+      <label for="answer_qcm" class="qcm">Bonne(s) Réponse(s) (séparer les différentes réponses par des |)</label>
+      {{textarea row="4"  required=true placeholder="No :)|it's a secret:)" value=answer_qcm class="qcm shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      <label for="bad_answer_qcm" class="qcm">Mauvaises(s) Réponse(s) (séparer les différentes réponses par des |)</label>
+      {{textarea row="4"  required=true placeholder="Yes :(|Hitler was fine" value=bad_answer_qcm class="qcm shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{!-- Part of the form about text with hole --}}
+      <label for="text_hole" class="hole">Texte</label>
+      {{textarea row="10"  required=true placeholder="look at this awesome text" value=text_hole class="hole shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      <label for="number_hole" class="hole">nombre de trou</label>
+      {{input  required=true placeholder="5" value=number_hole class="hole shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{!-- Part of the form about math quesion--}}
+      <label for="unknown" class="math">Inconnus(séparés par des virgules)</label>
+      {{input  required=true placeholder="x,y" value=unknown class="math shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      <label for="formula" class="math">Formule pour la réponse</label>
+      {{input  required=true placeholder="x*y" value=formula class="math shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{!-- Button that must be visible only if a question_type is chosen --}}
+      <button {{action "addQuizz" }}  class="formBtn base">
+        Créer
+	     </button>
+    </form>
+    <div class="text-red">{{errorMessage}}</div>
+  </div>
+</div>
