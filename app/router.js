@@ -31,7 +31,7 @@ Router.map(function() {
   });
 
   this.route('question', function() {
-    this.route('add',{path: '/question/add/:questionary_id'});
+    this.route('add',{path: '/add/:questionary_id'});
   });
 });
 

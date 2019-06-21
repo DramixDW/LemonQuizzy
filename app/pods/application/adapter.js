@@ -16,4 +16,11 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin,{
     if(snapshot.adapterOptions !== undefined) return this._super(...arguments) + `/${snapshot.adapterOptions}`;
     else return this._super(...arguments);
   },
+
+  urlForFindRecord(id, modelName, snapshot) {
+    let baseUrl = this.buildURL(modelName, id, snapshot);
+    if(snapshot.adapterOptions !== undefined)return `${baseUrl.replace(/\/[^\/]+$/,"")}/${snapshot.adapterOptions}/${id}`;
+    else return baseUrl
+    //return `${baseUrl}/users/${snapshot.adapterOptions.user_id}/playlists/${id}`;
+  }
 });

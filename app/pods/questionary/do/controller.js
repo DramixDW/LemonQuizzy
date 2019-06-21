@@ -5,6 +5,11 @@ export default Controller.extend({
     session:     service('session'),
     currentUser: service('current-user'),
     store: service(),
+    pageNum: 1,
+    updateCount: function(){
+        let pageCount = document.getElementById('pageCount');
+        pageCount.innerHTML = `${this.pageNum}/${this.pageTot}`;
+    },
     setVisibility(name,display){
         let x = document.getElementsByClassName(name);
         for (let i = 0; i < x.length; i++) {
@@ -12,7 +17,17 @@ export default Controller.extend({
         }
     },
       actions: {
-          changeQuestion() {
-          }
-      }
+        goLeft: function(){
+            if(this.pageNum === 1) return;
+            else this.pageNum--;
+            this.updateCount();  
+        },
+        goRight: function(){
+            if(this.pageNum === this.pageTot) return;
+            else this.pageNum++;
+            this.updateCount();
+        }     
+    }
+    
+   
 });
