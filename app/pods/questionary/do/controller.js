@@ -16,16 +16,33 @@ export default Controller.extend({
              x[i].style.display = display;
         }
     },
+    switchQuestion (fromRight){
+        //pageNum start at 1 but question.index start at 0. Therefore, pageNum is the question at the right and actual question is pagenum -1
+        let toGo 
+        let toComeNumber = this.pageNum - 1;
+        let toRight = this.pageNum -2;
+        let toCome = document.getElementById(`question-${toComeNumber}`);
+        if(fromRight) toGo = document.getElementById(`question-${toRight}`);
+        else toGo = document.getElementById(`question-${this.pageNum}`);
+        toGo.style.width = "0px";
+        toCome.style.width = "100vw";
+    },
       actions: {
         goLeft: function(){
             if(this.pageNum === 1) return;
             else this.pageNum--;
-            this.updateCount();  
+            this.updateCount();
+            this.switchQuestion(false);  
         },
         goRight: function(){
             if(this.pageNum === this.pageTot) return;
             else this.pageNum++;
             this.updateCount();
+            try {
+               this.switchQuestion(true);
+            } catch (error) {
+               console.log(error);
+            }
         }     
     }
     
