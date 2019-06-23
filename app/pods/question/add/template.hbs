@@ -19,7 +19,7 @@ math
       <select onchange={{action "setSelection" value="target.value"}}>
         <option disabled selected> -- type de question -- </option>
         {{#each this.model as |type|}}
-          <option value={{type.id}}> {{type.name}} </option>
+          <option value={{type.id}}> {{type.verbose_name}} </option>
         {{/each}}
       </select>
       {{!-- Part of the form common to all question type --}}

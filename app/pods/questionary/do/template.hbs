@@ -1,15 +1,41 @@
 <div>
   <h3 class="text-center text-white  bg-green p-4">
-    {{this.model.title}}
+    {{this.model.title}} 
   </h3>
-  <div class="flex flex-wrap bg-green justify-around p-4 text-white">
-    {{#each this.model.questions as |question|}}
-      <button class="bg-green text-white border border-white question-{{question.id}}" {{action "changeQuestion"}}>
-          {{question.id}}
-      </button>
-    {{/each}}
-  </div>
-  {{#each this.model.questions as |question|}}
-    {{if }}
+</div>
+<div class="flex">
+  {{#each this.model.questions as |question index|}}
+    {{log question.question_type.id}}
+    {{#if (eq question.question_type.id "1")}}
+      <Normal  @question={{question}} id="question-{{index}}" class="{{unless (eq index 0) "w-0"}} trans-smooth py-8 overflow-hidden"/>
+    {{/if}}
+    {{#if (eq question.question_type.id "2")}}
+      <Qcm  @question={{question}} />
+    {{/if}}
+    {{#if (eq question.question_type.id "3")}}
+      <Hole  @question={{question}} />
+    {{/if}}
+    {{#if (eq question.question_type.id "4")}}
+      <Label @question={{question}} />
+    {{/if}}
+    {{#if (eq question.question_type.id "5")}}
+      <Math @question={{question}} />
+    {{/if}}
   {{/each}}
+</div>
+<div class="border-t w-4/5 ml-1/10 flex justify-around py-8">
+  <button  {{action "goLeft" }} class="text-5xl text-blue">
+    &lt;
+  </button>
+  <p id="pageCount" class="text-3xl py-2">
+    1/{{this.model.questions.length}}
+  </p>
+  <button {{action "goRight" }} class="text-5xl text-blue">
+    >
+  </button>
+</div>
+<div class="w-screen flex justify-center">
+  <button class="bg-green p-4 text-white hover:bg-greenDarker font-bold">
+    Valider
+  </button>
 </div>

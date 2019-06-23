@@ -17,3 +17,7 @@
 .math{
     display: none ;
 }
+
+.trans-smooth {
+    transition-duration: 2s;
+}

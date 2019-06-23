@@ -14,6 +14,7 @@ Router.map(function() {
   });
   this.route('forum', function() {
     this.route('topics',{path:'/:category_id'})
+    this.route('add');
   });
   this.route('topic', function() {
     this.route('index',{path:'/:topic_id'})
@@ -31,7 +32,20 @@ Router.map(function() {
   });
 
   this.route('question', function() {
-    this.route('add',{path: '/question/add/:questionary_id'});
+    this.route('add',{path: '/add/:questionary_id'});
+  });
+  this.route('dashboard', function() {
+    this.route('user');
+    this.route('category');
+    this.route('forum');
+  });
+
+  this.route('user', function() {
+    this.route('add');
+  });
+
+  this.route('category', function() {
+    this.route('add');
   });
 });
 

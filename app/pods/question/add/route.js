@@ -6,7 +6,7 @@ export default Route.extend({
         this.set('quizzID',params.questionary_id);
         return this.store.findAll('question_type'); 
     },
-    setupController(controller, model) {
+    setupController(controller) {
         this._super(...arguments);
         controller.set('quizzID', this.get('quizzID'));
     },

@@ -1,21 +1,50 @@
 import Controller from '@ember/controller';
+import {inject as service} from "@ember/service";
 
 export default Controller.extend({
     session:     service('session'),
     currentUser: service('current-user'),
     store: service(),
+    pageNum: 1,
+    updateCount: function(){
+        let pageCount = document.getElementById('pageCount');
+        pageCount.innerHTML = `${this.pageNum}/${this.pageTot}`;
+    },
     setVisibility(name,display){
         let x = document.getElementsByClassName(name);
         for (let i = 0; i < x.length; i++) {
              x[i].style.display = display;
         }
     },
+    switchQuestion (fromRight){
+        //pageNum start at 1 but question.index start at 0. Therefore, pageNum is the question at the right and actual question is pagenum -1
+        let toGo 
+        let toComeNumber = this.pageNum - 1;
+        let toRight = this.pageNum -2;
+        let toCome = document.getElementById(`question-${toComeNumber}`);
+        if(fromRight) toGo = document.getElementById(`question-${toRight}`);
+        else toGo = document.getElementById(`question-${this.pageNum}`);
+        toGo.style.width = "0px";
+        toCome.style.width = "100vw";
+    },
       actions: {
-          changeQuestion(id) {
-              for(let i=0;i<this.model.questions.length;i++){
-                  this.setVisibility(`question-${question.id}`,'none');
-              }
-              this.setVisibility(`question-${id}`,'block');
-          }
-      }
+        goLeft: function(){
+            if(this.pageNum === 1) return;
+            else this.pageNum--;
+            this.updateCount();
+            this.switchQuestion(false);  
+        },
+        goRight: function(){
+            if(this.pageNum === this.pageTot) return;
+            else this.pageNum++;
+            this.updateCount();
+            try {
+               this.switchQuestion(true);
+            } catch (error) {
+               console.log(error);
+            }
+        }     
+    }
+    
+   
 });

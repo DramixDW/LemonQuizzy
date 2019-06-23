@@ -1,1 +1,13 @@
-{{yield}}
+<div class="w-screen">
+  <div class="flex  justify-between mx-1/10 w-4/5 ">
+    <h2 class="py-4  font-medium">
+        {{question.title}} {{question.count}}
+    </h2>
+    <h2 class="font-bold w-1/5 text-2xl py-4 text-right">
+        /{{question.good_answer_value}}
+    </h2>
+  </div>
+  <form class="w-screen py-4">
+    {{input  required=true placeholder="Ma réponse" id=question.id class=" mx-1/10 shadow appearance-none border rounded px-3 py-2 w-4/5   text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+  </form>
+</div>

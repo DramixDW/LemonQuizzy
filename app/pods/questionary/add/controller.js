@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
-let time;
+
 export default Controller.extend({
+    time:null,
     options: {
         dropdown: true,
         timeFormat: 'HH:mm',
@@ -10,13 +11,13 @@ export default Controller.extend({
   
       actions: {
           onChange(selectedTime) {
-              time = selectedTime;
+              this.time = selectedTime;
           },
           addQuizz(){
             let quizz = this.store.createRecord("questionary", {
                 title: this.get('title'),
                 options:{
-                    "timer" : time
+                    "timer" : this.get('time')
                 }
             });
             let nquizz;
