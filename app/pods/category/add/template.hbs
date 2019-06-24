@@ -1,1 +1,24 @@
-{{outlet}}
+<div>
+  <h3 class="text-center text-white  bg-green p-4">
+    Nouvelle question
+  </h3>
+  <div>
+    <form action="addCat"  class="form" method="post">
+      <select onchange={{action "setSelection" value="target.value"}}>
+        <option disabled selected> -- Forum -- </option>
+        {{#each this.model as |forum|}}
+          <option value={{forum.id}}> {{forum.title}} </option>
+        {{/each}}
+      </select>
+      {{!-- Part of the form common to all question type --}}
+      <label for="title">Titre</label>
+      {{input  required=true placeholder="Title" value=title class=" shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      <label for="description" >Description</label>
+      {{textarea row="10"  required=true placeholder="it's about code and hookers" value=description class=" shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      <button {{action "addCat" }}  class="formBtn">
+        Créer
+	     </button>
+    </form>
+    <div class="text-red">{{errorMessage}}</div>
+  </div>
+</div>

@@ -15,10 +15,12 @@
           <h3 class="p-2">
               {{forum.title}}
           </h3>
-          <button class="bg-green p-2 text-white border border-white">
-              Edit
-          </button>
-          <button class="bg-green p-2 text-white border border-white">
+          {{#link-to "forum.edit" forum}}
+            <button class="bg-green p-2 text-white border border-white">
+                Edit
+            </button>
+          {{/link-to}}
+          <button {{action "removeForum" forum.id}} class="bg-green p-2 text-white border border-white">
               Delete
           </button>
         </div>

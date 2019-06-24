@@ -4,7 +4,7 @@ export default Route.extend({
     
     model(params){
         this.set('quizzID',params.questionary_id);
-        return this.store.findAll('question_type'); 
+        return this.store.findAll('questiontype'); 
     },
     setupController(controller) {
         this._super(...arguments);

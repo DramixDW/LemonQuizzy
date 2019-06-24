@@ -5,7 +5,8 @@ export default Controller.extend({
     session:     service('session'),
     currentUser: service('current-user'),
     store: service(),
-    typeId:1, 
+    typeName:"normal", 
+    typeId:0,
     setVisibility(name,display){
         let x = document.getElementsByClassName(name);
         for (let i = 0; i < x.length; i++) {
@@ -17,54 +18,67 @@ export default Controller.extend({
     },
     actions: {
         setSelection(selected) {
-            this.set('typeId',selected);
-            let Type = ['base','normal','qcm','hole','label','math'];
-            let value = Type[selected];
+            let info = selected.split('-');
+            this.set('typeId',parseInt(info[1]));
+            selected = info[0];
+            this.set('typeName',selected);
+            let Type=['normal','qcm','text_has_gaps','label','math'];
+            let value = selected;
             this.setVisibility('base','block');
-            for(let i= 1;i<Type.length;i++){
+            for(let i= 0;i<Type.length;i++){
                 this.setVisibility(Type[i],'none')
             }
             this.setVisibility(value,'block');
         },
         addQuizz(){
             let option;
-            switch(this.typeId){
-                case "1" :
-                    option={
-                        answer : this.get('answer'),
+            let answer;
+            switch(this.typeName){
+                case "normal" :
+                    option={}
+                    answer={
+                        answer : this.get("answer"),
                     };
                     break;
-                case "2" :
+                case "qcm" :
                     option={
-                        answer : this.get('answer_qcm').split('|'),
-                        bad_answer : this.get('bad_answer_qcm').split('|')
+                        answers : this.get('answer_qcm').split('\n').concat(this.get('bad_answer_qcm').split('\n'))
+                    }
+                    answer={
+                        answers : this.get('answer_qcm').split('\n')
                     }
                     break;
-                case "3" :
+                case "label" :
                     break;
-                case "4" :
+                case "text_has_gaps" :
                     option={
-                        text:this.get('text_hole'),
-                        holeNumer:this.get('number_hole')
+                        holes: parseInt(this.get('number_hole'))
+                    }
+                    answer={
+                        answer:this.get('text_hole')                         
                     }
                     break;
-                case "5" :
+                case "math" :
                     option={
-                        unknown: this.get('unknown').split(','),
-                        formula:this.get('formula')
+                        variables : {
+                            "x" : [0,10],
+                            "y" : [0,20]
+                        },
+                        equation :this.get('formula')
                     }
+                    answer={}
                     break;  
             }
-            //let question_type =this.store.findRecord('question-type',this.typeId)
+            let question_type =this.store.peekRecord('questiontype',this.typeId);
             let question = this.store.createRecord("question", {
-                title: this.get('title'),
+                title: this.get("title"),
                 good_answer_value :  parseInt(this.get('good_answer_value')),
                 no_answer_value :  parseInt(this.get('no_answer_value')),
                 bad_answer_value :  parseInt(this.get('bad_answer_value')),
                 options : option,
-                question_type: this.typeId
+                answer : answer,
+                questiontype: question_type
             });
-            //console.log(question)
             question.save( { adapterOptions: this.get('quizzID') });
         }
         

@@ -1,0 +1,25 @@
+
+<div class="w-full ">
+  <div class=" flex justify-around text-white  bg-green">
+    <h3 class="my-2 py-2">
+      Edit Profile
+    </h3>
+  </div>
+  <div>
+    <form {{action "editUser" on="submit"}}  class="form" method="post">
+      <label for="username">E-mail</label>
+      {{input   placeholder="example@example.com" value=(mut model.email) class=""}}
+      <label for="password">Surnom</label>
+      {{input  placeholder="username"  value=(mut model.username) class=""}}
+      <label for="firstname">prénom</label>
+      {{input   placeholder="Jhon" value=(mut model.firstname) class=""}}
+      <label for="name">Nom</label>
+      {{input  placeholder="Doe"  value=(mut model.lastname) class=""}}
+      <label for="role">Role</label>
+      {{input   placeholder="Jhon" value=(mut model.role) class=""}}
+      <button type="submit "class="formBtn">
+        Edit
+	     </button>
+    </form>
+  </div>
+</div>

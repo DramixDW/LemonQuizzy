@@ -13,6 +13,12 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin,{
   }),
   urlForCreateRecord(modelName, snapshot) {
     if(snapshot.adapterOptions === 'register') return this._super(...arguments).replace('users','') + `auth/register`;
+    if(snapshot.adapterOptions !== undefined && snapshot.adapterOptions.includes('admin')){
+      let routeInfo = snapshot.adapterOptions.split('/');
+      let pluralizedModel = this._super(...arguments).match(/\/[^\/]+$/);
+      return this._super(...arguments).replace(pluralizedModel,`/admin/${pluralizedModel}/${routeInfo[1]}`)
+
+    }
     if(snapshot.adapterOptions !== undefined) return this._super(...arguments) + `/${snapshot.adapterOptions}`;
     else return this._super(...arguments);
   },

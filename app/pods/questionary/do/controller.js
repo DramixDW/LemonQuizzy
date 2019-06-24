@@ -25,7 +25,9 @@ export default Controller.extend({
         if(fromRight) toGo = document.getElementById(`question-${toRight}`);
         else toGo = document.getElementById(`question-${this.pageNum}`);
         toGo.style.width = "0px";
+        toGo.style.height = "0px";
         toCome.style.width = "100vw";
+        toCome.style.height = "auto";
     },
       actions: {
         goLeft: function(){

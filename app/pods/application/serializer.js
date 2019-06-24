@@ -1,4 +1,7 @@
 import DS from 'ember-data';
+import { underscore } from '@ember/string';
+
+
 
 export default DS.JSONAPISerializer.extend({
   normalizeQueryResponse(store, clazz, payload) {
@@ -12,6 +15,10 @@ export default DS.JSONAPISerializer.extend({
     return result;
   },
 
+  
+  payloadKeyFromModelName(modelName) {
+    return underscore(modelName);
+  },
 
   createPageMeta(data) {
 

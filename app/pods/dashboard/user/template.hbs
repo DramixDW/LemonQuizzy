@@ -12,15 +12,19 @@
   <div>
       {{#each this.model as |user|}}
         <div class="flex justify-around border border-green border-t-0 p-4">
-          <h3 class="p-2 text-dark">
+          <h3 class="wrapped p-2 text-dark w-3/5">
               {{user.email}}
           </h3>
-          <button class="bg-green p-2 text-white border border-white">
-              Edit
-          </button>
-          <button class="bg-green p-2 text-white border border-white">
-              Delete
-          </button>
+          {{#link-to "user.edit" user }}
+            <button class="bg-green p-2 text-white border border-white">
+                Edit
+            </button>
+          {{/link-to}}
+          {{#link-to "dashboard.user"}}
+            <button {{action "removeUser" user.id}}class="bg-green p-2 text-white border border-white">
+                Delete
+            </button>
+          {{/link-to}}
         </div>
       {{/each}}
   </div>

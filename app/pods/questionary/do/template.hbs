@@ -5,20 +5,19 @@
 </div>
 <div class="flex">
   {{#each this.model.questions as |question index|}}
-    {{log question.question_type.id}}
-    {{#if (eq question.question_type.id "1")}}
+    {{#if (eq question.questiontype.name "normal")}}
       <Normal  @question={{question}} id="question-{{index}}" class="{{unless (eq index 0) "w-0"}} trans-smooth py-8 overflow-hidden"/>
     {{/if}}
-    {{#if (eq question.question_type.id "2")}}
-      <Qcm  @question={{question}} />
+    {{#if (eq question.questiontype.name "qcm")}}
+      <Qcm  @question={{question}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0"}} trans-smooth py-8 overflow-hidden"/>
     {{/if}}
-    {{#if (eq question.question_type.id "3")}}
+    {{#if (eq question.questiontype.name "text_has_gaps")}}
       <Hole  @question={{question}} />
     {{/if}}
-    {{#if (eq question.question_type.id "4")}}
+    {{#if (eq question.questiontype.name "label")}}
       <Label @question={{question}} />
     {{/if}}
-    {{#if (eq question.question_type.id "5")}}
+    {{#if (eq question.questiontype.name "math")}}
       <Math @question={{question}} />
     {{/if}}
   {{/each}}

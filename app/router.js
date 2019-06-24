@@ -15,6 +15,7 @@ Router.map(function() {
   this.route('forum', function() {
     this.route('topics',{path:'/:category_id'})
     this.route('add');
+    this.route('edit',{path:'/edit/:forum_id'});
   });
   this.route('topic', function() {
     this.route('index',{path:'/:topic_id'})
@@ -42,10 +43,12 @@ Router.map(function() {
 
   this.route('user', function() {
     this.route('add');
+    this.route('edit',{path:'/edit/:user_id'});
   });
 
   this.route('category', function() {
     this.route('add');
+    this.route('edit');
   });
 });
 

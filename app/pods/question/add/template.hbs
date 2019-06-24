@@ -4,7 +4,7 @@ class:
 base
 normal
 qcm
-hole
+text_has_gasps
 label
 math
 
@@ -16,10 +16,10 @@ math
   </h3>
   <div>
     <form action="addQuizz"  class="" method="post">
-      <select onchange={{action "setSelection" value="target.value"}}>
+      <select onchange={{action "setSelection" value="target.value" }}>
         <option disabled selected> -- type de question -- </option>
         {{#each this.model as |type|}}
-          <option value={{type.id}}> {{type.verbose_name}} </option>
+          <option value="{{type.name}}-{{type.id}}" > {{type.verbose_name}} </option>
         {{/each}}
       </select>
       {{!-- Part of the form common to all question type --}}
@@ -35,15 +35,17 @@ math
       <label for="answer" class="normal">Réponse</label>
       {{input  required=true placeholder="No :)" value=answer class="normal shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
       {{!-- Part of the form for the QCM question type --}}
-      <label for="answer_qcm" class="qcm">Bonne(s) Réponse(s) (séparer les différentes réponses par des |)</label>
-      {{textarea row="4"  required=true placeholder="No :)|it's a secret:)" value=answer_qcm class="qcm shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
-      <label for="bad_answer_qcm" class="qcm">Mauvaises(s) Réponse(s) (séparer les différentes réponses par des |)</label>
-      {{textarea row="4"  required=true placeholder="Yes :(|Hitler was fine" value=bad_answer_qcm class="qcm shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
-      {{!-- Part of the form about text with hole --}}
-      <label for="text_hole" class="hole">Texte</label>
-      {{textarea row="10"  required=true placeholder="look at this awesome text" value=text_hole class="hole shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
-      <label for="number_hole" class="hole">nombre de trou</label>
-      {{input  required=true placeholder="5" value=number_hole class="hole shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      <label for="answer_qcm" class="qcm">Bonne(s) Réponse(s) (une réponse par ligne)</label>
+      {{textarea row="4"  required=true placeholder="No :) 
+it's a secret:)" value=answer_qcm class="qcm shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      <label for="bad_answer_qcm" class="qcm">Mauvaises(s) Réponse(s) (une réponse par ligne)</label>
+      {{textarea row="4"  required=true placeholder="Yes :(
+Hitler was fine" value=bad_answer_qcm class="qcm shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{!-- Part of the form about text with text_has_gasps --}}
+      <label for="text_hole" class="text_has_gaps">Texte</label>
+      {{textarea row="10"  required=true placeholder="look at this awesome text" value=text_hole class="text_has_gaps shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      <label for="number_hole" class="text_has_gaps">nombre de trou</label>
+      {{input  required=true placeholder="5" value=number_hole class="text_has_gaps shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
       {{!-- Part of the form about math quesion--}}
       <label for="unknown" class="math">Inconnus(séparés par des virgules)</label>
       {{input  required=true placeholder="x,y" value=unknown class="math shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}

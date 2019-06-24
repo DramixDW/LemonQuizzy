@@ -1,16 +1,16 @@
-<<div class="w-full ">
+<div class="w-full ">
   <div class=" flex justify-around text-white  bg-green">
     <h3 class="my-2 py-2">
       Create un forum
     </h3>
   </div>
   <div>
-    <form {{action "addTopic"  on="submit"}}  class="form" method="post">
-      <label for="username">Titre</label>
-      {{input   placeholder="How to ?" value=title class=""}}
+    <form {{action "updateForum" this.model on="submit"}}  class="form" method="post">
+      <label for="title">Titre</label>
+      {{input   placeholder="Title" value=(mut model.title) class=""}}
       <button type="submit "class="formBtn">
         Créer
 	     </button>
     </form>
   </div>
-</div>>
+</div>

@@ -1,1 +1,18 @@
-qcm
+<div class="w-screen">
+  <div class="flex  justify-between mx-1/10 w-4/5 ">
+    <h2 class="py-4  font-medium">
+        {{question.title}} {{question.count}}
+    </h2>
+    <h2 class="font-bold w-1/5 text-2xl py-4 text-right">
+        /{{question.good_answer_value}}
+    </h2>
+  </div>
+  <form class="w-full ">
+    {{#each question.options.answers as |answer index|}}
+      <div class="w-full mx-1/10 w-4/5 text-xl py-1">
+        {{input type="checkbox"   id=(answer-name indexQ index) }}
+        <label for={{answer-name indexQ index}}>{{answer}}</label>
+      </div>
+    {{/each}}
+  </form>
+</div>

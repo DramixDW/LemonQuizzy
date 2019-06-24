@@ -9,6 +9,7 @@ export default Model.extend({
     no_answer_value: DS.attr('number'),
     bad_answer_value: DS.attr('number'),
     options: DS.attr('raw'),
-    question_type: DS.belongsTo('question-type'),
+    answer : DS.attr('raw'),
+    questiontype: DS.belongsTo('questiontype'),
     questionary: DS.belongsTo('questionary')
 });

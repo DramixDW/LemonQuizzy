@@ -3,25 +3,32 @@
     <h3 class="my-2 py-2">
       Categories dashboard
     </h3>
-    {{#link-to "forum.add"}}
+    {{#link-to "category.add"}}
       <button class="text-white border border-white p-3">
           Créer
       </button>
     {{/link-to}}
   </div>
   <div>
-      {{#each this.model as |category|}}
+    {{#each this.model as |forum|}}
+      <div class=" flex justify-around text-white  bg-green">
+        <h4 class="my-2 py-2">
+          {{forum.title}}
+        </h4>
+      </div>
+      {{#each forum.categories as |category|}}
         <div class="flex justify-around border border-green border-t-0 p-4">
-          <h3 class="p-2">
+          <h5 class="p-2">
               {{category.title}}
-          </h3>
+          </h5>
           <button class="bg-green p-2 text-white border border-white">
               Editer
           </button>
-          <button class="bg-green p-2 text-white border border-white">
+          <button {{action "removeCategory" category.id}} class="bg-green p-2 text-white border border-white">
               Delete
           </button>
         </div>
       {{/each}}
+    {{/each}}  
   </div>
 </div>
