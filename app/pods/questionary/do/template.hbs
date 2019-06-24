@@ -6,7 +6,7 @@
 <div class="flex">
   {{#each this.model.questions as |question index|}}
     {{#if (eq question.questiontype.name "normal")}}
-      <Normal  @question={{question}} id="question-{{index}}" class="{{unless (eq index 0) "w-0"}} trans-smooth py-8 overflow-hidden"/>
+      <Normal  @question={{question}} id="question-{{index}}"  @indexQ={{index}} class="{{unless (eq index 0) "w-0"}} trans-smooth py-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq question.questiontype.name "qcm")}}
       <Qcm  @question={{question}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0"}} trans-smooth py-8 overflow-hidden"/>
@@ -18,7 +18,7 @@
       <Label @question={{question}} />
     {{/if}}
     {{#if (eq question.questiontype.name "math")}}
-      <Math @question={{question}} />
+      <Math @question={{question}} @question={{question}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0"}} trans-smooth py-8 overflow-hidden"/>
     {{/if}}
   {{/each}}
 </div>
