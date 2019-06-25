@@ -13,6 +13,14 @@ export default Controller.extend({
             this.store.findRecord("forum", id).then(forum =>{
                 forum.destroyRecord()
             });
+        },
+        updateList(){
+            let search = this.get('search');
+            let toFilter =this.get('model'); 
+            toFilter= toFilter.filter(elem =>{
+                return elem.title.indexOf(search) !== -1
+            })
+            this.set('list',toFilter);
         }
     }
 });

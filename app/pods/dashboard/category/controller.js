@@ -11,7 +11,7 @@ export default Controller.extend({
     actions: {
         removeCategory(id) {
             this.store.findRecord("category", id).then(category =>{
-                category.destroyRecord()
+                category.destroyRecord({adapterOptions :`admin/${id}`})
             });
         }
     }

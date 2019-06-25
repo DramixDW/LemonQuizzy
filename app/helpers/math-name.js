@@ -6,7 +6,6 @@ export function mathName(params) {
   Object.keys(options).forEach( variable =>{
     let random =Math.floor(Math.random() * (+options[variable][1] - +options[variable][0])) + +options[variable][0]; 
     title = title.replace(variable,random.toString());
-    console.log(variable);
   })
   return title;
 }

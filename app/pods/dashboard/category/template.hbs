@@ -21,9 +21,11 @@
           <h5 class="p-2">
               {{category.title}}
           </h5>
-          <button class="bg-green p-2 text-white border border-white">
-              Editer
-          </button>
+          {{#link-to "category.edit" category.id}}
+            <button class="bg-green p-2 text-white border border-white">
+                Editer
+            </button>
+          {{/link-to}}
           <button {{action "removeCategory" category.id}} class="bg-green p-2 text-white border border-white">
               Delete
           </button>

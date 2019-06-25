@@ -13,6 +13,14 @@ export default Controller.extend({
             this.store.findRecord("user", id).then(user =>{
                 user.destroyRecord()
             });
+        },
+        updateList(){
+            let search = this.get('search');
+            let toFilter =this.get('model'); 
+            toFilter= toFilter.filter(elem =>{
+                return elem.email.indexOf(search) !== -1
+            })
+            this.set('list',toFilter);
         }
     }
 });

@@ -12,6 +12,7 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin,{
     };
   }),
   urlForCreateRecord(modelName, snapshot) {
+    console.log(snapshot.adapterOptions);
     if(snapshot.adapterOptions === 'register') return this._super(...arguments).replace('users','') + `auth/register`;
     if(snapshot.adapterOptions !== undefined && snapshot.adapterOptions.includes('admin')){
       let routeInfo = snapshot.adapterOptions.split('/');
@@ -22,7 +23,33 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin,{
     if(snapshot.adapterOptions !== undefined) return this._super(...arguments) + `/${snapshot.adapterOptions}`;
     else return this._super(...arguments);
   },
+  urlForUpdateRecord(id, modelName, snapshot) {
+    let route = this._super(...arguments)
+    if(snapshot.adapterOptions !== undefined && snapshot.adapterOptions.includes('admin')){
+      let routeInfo = snapshot.adapterOptions.split('/');
+      route = route.replace(/\/[^\/]+$/,'')
+      let pluralizedModel = route.match(/\/[^\/]+$/);
+      if(routeInfo[1])return route.replace(pluralizedModel,`/admin/${pluralizedModel}/${routeInfo[1]}`)
+      else return route.replace(pluralizedModel,`/admin${pluralizedModel}/${id}`)
 
+    }
+    if(snapshot.adapterOptions !== undefined) return this._super(...arguments) + `/${snapshot.adapterOptions}`;
+    else return this._super(...arguments);
+  },
+  urlForDeleteRecord(id, modelName, snapshot) {
+    let route = this._super(...arguments)
+    console.log(snapshot.adapterOptions);
+    if(snapshot.adapterOptions !== undefined && snapshot.adapterOptions.includes('admin')){
+      let routeInfo = snapshot.adapterOptions.split('/');
+      route = route.replace(/\/[^\/]+$/,'')
+      let pluralizedModel = route.match(/\/[^\/]+$/);
+      if(routeInfo[1])return route.replace(pluralizedModel,`/admin/${pluralizedModel}/${routeInfo[1]}`)
+      else return route.replace(pluralizedModel,`/admin${pluralizedModel}/${id}`)
+
+    }
+    if(snapshot.adapterOptions !== undefined) return this._super(...arguments) + `/${snapshot.adapterOptions}`;
+    else return this._super(...arguments);
+  },
   urlForFindRecord(id, modelName, snapshot) {
     let baseUrl = this.buildURL(modelName, id, snapshot);
     if(snapshot.adapterOptions !== undefined)return `${baseUrl.replace(/\/[^\/]+$/,"")}/${snapshot.adapterOptions}/${id}`;
