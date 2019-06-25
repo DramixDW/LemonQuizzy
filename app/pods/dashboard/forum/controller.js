@@ -21,6 +21,10 @@ export default Controller.extend({
                 return elem.title.indexOf(search) !== -1
             })
             this.set('list',toFilter);
+        },removeCategory(id) {
+            this.store.findRecord("category", id).then(category =>{
+                category.destroyRecord({adapterOptions :`admin/${id}`})
+            });
         }
     }
 });

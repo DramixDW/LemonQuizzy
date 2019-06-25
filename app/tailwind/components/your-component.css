@@ -19,3 +19,10 @@
 .wrapped{
     overflow-wrap: break-word;
 }
+
+.retracted{
+    max-height : 0px;
+    overflow: hidden;
+    transition-duration: 3s;
+}
+

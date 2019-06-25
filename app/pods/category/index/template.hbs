@@ -1,15 +1,18 @@
 <div class="w-full ">
   <div class=" flex justify-around text-white  bg-green">
     <h3 class="my-2 py-2">
-      Forum
+      Catégories
     </h3>
   </div>
-  {{#each this.model as |forum|}}
-    {{#link-to "category.index" forum.id}}
+  {{#each this.model as |category|}}
+    {{#link-to "category.topics" category.id}}
       <button class="w-full  border-2 border-t-0 p-4 border-blue hover:bg-grey">
         <h2 class="text-left">
-          {{forum.title}}
+          {{category.title}}
         </h2>
+        <p class="text-left">
+          {{category.description}}    
+        </p>
       </button>
     {{/link-to}}
   {{/each}}

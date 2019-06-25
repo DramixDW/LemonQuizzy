@@ -13,7 +13,6 @@ Router.map(function() {
     this.route('edit');
   });
   this.route('forum', function() {
-    this.route('topics',{path:'/:category_id'})
     this.route('add');
     this.route('edit',{path:'/edit/:forum_id'});
   });
@@ -49,6 +48,8 @@ Router.map(function() {
   this.route('category', function() {
     this.route('add');
     this.route('edit',{path:'/edit/:category_id'});
+    this.route('topics',{path:'/:category_id'});
+    this.route('index',{path:'/:forum_id'})
   });
 });
 

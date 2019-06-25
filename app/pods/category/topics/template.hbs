@@ -1,0 +1,22 @@
+
+<div class="w-full ">
+  <div class=" flex justify-around text-white  bg-green">
+    <h3 class="my-2 py-2">
+      {{this.model.title}}
+    </h3>
+    <button class="my-2 py-2 px-4 bg-green text-white border border-greenDarker hover:bg-greenDarker">
+      {{#link-to "topic.add" this.model}}Créer un topic {{/link-to }}
+    </button>
+  </div>
+  <div class=" py-2 bg-blue flex text-white text-center">
+    <p class="w-3/5 font-bold">
+      Titre
+    </p>
+    <p class="w-2/5 font-bold">
+      Posté par
+    </p>
+  </div>
+  {{#each this.model.topics as |topic|}}
+    <Topic-card @topic={{topic}} />
+  {{/each}}
+</div>
