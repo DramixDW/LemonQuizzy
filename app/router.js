@@ -51,6 +51,9 @@ Router.map(function() {
     this.route('topics',{path:'/:category_id'});
     this.route('index',{path:'/:forum_id'})
   });
+  this.route('message', function() {
+    this.route('user');
+  });
 });
 
 export default Router;

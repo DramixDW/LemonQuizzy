@@ -10,6 +10,6 @@ export default Model.extend({
     group: DS.belongsTo('group'),
     results: DS.hasMany('results'),
     options: DS.attr('raw'),
-    current_questionaries : DS.hasMany('questionary-pool')
+    current_questionaries : DS.hasMany('questionarypool')
 
 });

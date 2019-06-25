@@ -12,10 +12,10 @@
       <Qcm  @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "text_has_gaps")}}
-      <Hole  @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden" />
+      <Hole  @question={{poolQuestion.question}} @QPool={{poolQuestion}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden" />
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "math")}}
-      <Math @question={{poolQuestion.question}}  id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
+      <Math @question={{poolQuestion.question}} @QPool={{poolQuestion}}  id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
   {{/each}}
 </div>
@@ -32,7 +32,7 @@
   </button>
 </div>
 <div class="w-screen flex justify-center">
-  <button class="bg-green p-4 text-white hover:bg-greenDarker font-bold">
+  <button onclick={{action "validate"}} class="bg-green p-4 text-white hover:bg-greenDarker font-bold">
     Valider
   </button>
 </div>

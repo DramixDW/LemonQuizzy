@@ -1,7 +1,7 @@
 import { helper } from '@ember/component/helper';
 
-export function answerName(params) {
+export function holeName(params/*, hash*/) {
   return `${params[0]}-answer-${params[1]}`;
 }
 
-export default helper(answerName);
+export default helper(holeName);
