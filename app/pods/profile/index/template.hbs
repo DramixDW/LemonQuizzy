@@ -7,37 +7,48 @@
       {{#link-to "profile.edit" }}Edit {{/link-to }}
     </button>
   </div>
-  <img src="assets/images/profile.png" alt="profile pic" class="float-left pr-4">
-  <p class="profile-title">
+  <img src="http://localhost:8001/static/{{session.user.avatar}}" alt="profile pic" class="float-left pr-4 w-200">
+  <div>
+    <p class="profile-title pt-4">
     Prénom
-  </p>
-  <p class="profile-input">
-    {{session.user.firstname}}
-  </p>
-  <p class="profile-title">
-    Nom de famille
-  </p>
-  <p class="profile-input">
-    {{session.user.lastname}}
-  </p>
-  <p class="profile-title">
+    </p>
+    <p class="profile-input">
+      {{session.user.firstname}}
+    </p>
+  </div>
+  <div>
+    <p class="profile-title ">
+      Nom de famille
+    </p>
+    <p class="profile-input pb-6">
+      {{session.user.lastname}}
+    </p>
+  </div>
+  <div>
+    <p class="profile-title">
     Pseudo
-  </p>
-  <p class="profile-input">
-    {{session.user.username}}
-  </p>
-  <p class="profile-title">
+    </p>
+    <p class="profile-input">
+      {{session.user.username}}
+    </p>
+  </div>
+  <div>
+    <p class="profile-title">
     E-mail
-  </p>
-  <p class="profile-input">
-    {{session.user.email}}
-  </p>
-  <p class="profile-title">
+    </p>
+    <p class="profile-input">
+      {{session.user.email}}
+    </p>
+  </div>
+  <div>
+    <p class="profile-title">
     Profile crée le
-  </p>
-  <p class="profile-input">
-    {{moment-format currentUser.user.created-at "MM/DD/YYYY" "YYYY-MM-DD"}}
-  </p>
+    </p>
+    <p class="profile-input">
+      {{moment-format currentUser.user.created-at "MM/DD/YYYY" "YYYY-MM-DD"}}
+    </p>
+  </div>
+
   <div class=" flex justify-around text-white  bg-green my-4">
     <h3 class="my-2 py-2">
       Changer de mot de passe

@@ -43,11 +43,13 @@
     "ember-moment": "^7.8.1",
     "ember-qunit": "^4.4.1",
     "ember-resolver": "^5.0.1",
+    "ember-service-worker": "^0.7.2",
     "ember-simple-auth": "^1.8.2",
     "ember-simple-auth-token": "^4.0.7",
     "ember-source": "~3.10.0",
     "ember-timepicker": "^0.3.0",
     "ember-truth-helpers": "^2.1.0",
+    "ember-web-app": "^3.0.0-beta.4",
     "ember-welcome-page": "^4.0.0",
     "eslint-plugin-ember": "^6.2.0",
     "eslint-plugin-node": "^9.0.1",
@@ -56,5 +58,8 @@
   },
   "engines": {
     "node": "8.* || >= 10.*"
+  },
+  "dependencies": {
+    "lighthouse": "^5.1.0"
   }
 }

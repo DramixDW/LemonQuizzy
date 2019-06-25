@@ -9,6 +9,7 @@ export default Model.extend({
     questions: DS.hasMany('question'),
     group: DS.belongsTo('group'),
     results: DS.hasMany('results'),
-    options: DS.attr('raw')
+    options: DS.attr('raw'),
+    current_questionaries : DS.hasMany('questionary-pool')
 
 });

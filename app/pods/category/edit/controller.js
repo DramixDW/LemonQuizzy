@@ -16,7 +16,7 @@ export default Controller.extend({
         editCat(){
             console.log(this.get('model.forum'));
             let forum =this.store.peekRecord('forum',this.forumId)
-            this.model.set('forum',forum);
+            this.model.set('forum',forumId);
             this.get('model').save({ adapterOptions: `admin`});
             this.transitionToRoute('/dashboard/category')
         }

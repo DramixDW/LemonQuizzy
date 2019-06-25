@@ -19,5 +19,5 @@
 }
 
 .trans-smooth {
-    transition-duration: 2s;
+    transition:width 2s ease;
 }

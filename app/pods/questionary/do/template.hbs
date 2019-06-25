@@ -4,30 +4,28 @@
   </h3>
 </div>
 <div class="flex">
-  {{#each this.model.questions as |question index|}}
-    {{#if (eq question.questiontype.name "normal")}}
-      <Normal  @question={{question}} id="question-{{index}}"  @indexQ={{index}} class="{{unless (eq index 0) "w-0"}} trans-smooth py-8 overflow-hidden"/>
+  {{#each this.model.currentpoolquestions as |poolQuestion index|}}
+    {{#if (eq poolQuestion.question.questiontype.name "normal")}}
+      <Normal  @question={{poolQuestion.question}} id="question-{{index}}"  @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
-    {{#if (eq question.questiontype.name "qcm")}}
-      <Qcm  @question={{question}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0"}} trans-smooth py-8 overflow-hidden"/>
+    {{#if (eq poolQuestion.question.questiontype.name "qcm")}}
+      <Qcm  @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
-    {{#if (eq question.questiontype.name "text_has_gaps")}}
-      <Hole  @question={{question}} />
+    {{#if (eq poolQuestion.question.questiontype.name "text_has_gaps")}}
+      <Hole  @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden" />
     {{/if}}
-    {{#if (eq question.questiontype.name "label")}}
-      <Label @question={{question}} />
-    {{/if}}
-    {{#if (eq question.questiontype.name "math")}}
-      <Math @question={{question}} @question={{question}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0"}} trans-smooth py-8 overflow-hidden"/>
+    {{#if (eq poolQuestion.question.questiontype.name "math")}}
+      <Math @question={{poolQuestion.question}}  id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
   {{/each}}
 </div>
+
 <div class="border-t w-4/5 ml-1/10 flex justify-around py-8">
   <button  {{action "goLeft" }} class="text-5xl text-blue">
     &lt;
   </button>
   <p id="pageCount" class="text-3xl py-2">
-    1/{{this.model.questions.length}}
+    1/{{this.model.currentpoolquestions.length}}
   </p>
   <button {{action "goRight" }} class="text-5xl text-blue">
     >

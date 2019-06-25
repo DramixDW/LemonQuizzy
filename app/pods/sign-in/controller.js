@@ -6,6 +6,13 @@ export default Controller.extend({
     router: service(),
     getUser: service("get-user"),
     store: service(),
+    validateEmail(value){
+        let regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
+        return value.match(regexEmail)
+    },
+    validateLength(value,min,max){
+        return value.length <= max && value.length >= min;
+    },
     actions: {
         authenticate() {
             let _this = this;

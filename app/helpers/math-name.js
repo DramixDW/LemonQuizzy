@@ -1,6 +1,7 @@
 import { helper } from '@ember/component/helper';
 
 export function mathName(params) {
+  console.log(params);
   let title= params[0];
   let options = params[1].variables;
   Object.keys(options).forEach( variable =>{
