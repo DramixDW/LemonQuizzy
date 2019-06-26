@@ -1,0 +1,14 @@
+<div class="w-full bg-green text-white">
+    <h2 class="text-center text-bold py-4">
+    Mes questionnaires
+    </h2>
+</div>
+{{#each this.model as |questionary|}}
+  {{#if (eq questionary.author.id this.userID)}}
+    {{#link-to "questionary.edit" questionary.id }}
+        <h3 class="text-black text-center w-full p-4 border border-t-o border-green">
+            {{questionary.title}}
+        </h3>
+    {{/link-to}}
+  {{/if}}
+{{/each}}

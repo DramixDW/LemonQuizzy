@@ -27,6 +27,7 @@ export default {
   'greenDarker': '#338410',
 
   'blue': '#1b8aa4',
+  'blueElectric' : '#190399',
 
 
   'purple': '#7a1ba4',

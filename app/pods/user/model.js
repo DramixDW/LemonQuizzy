@@ -12,5 +12,8 @@ export default Model.extend({
     'created-at': DS.attr('date'),
     'updated-at': DS.attr('date'),
     'deleted-at': DS.attr('date'),
-    avatar : DS.attr('string')
+    avatar : DS.attr('string'),
+    messages : DS.hasMany('message',{ inverse: 'sender' }),
+    received : DS.hasMany('message',{inverse : 'receiver'}),
+    questionaries : DS.hasMany('questionary')
 });

@@ -28,6 +28,10 @@ export default Controller.extend({
                     _this.get('getUser')._scope(_this.get('session.data.authenticated.tokenData.sub'))
                     this.get('router').transitionTo('index');
                 })
+        },
+        connectFacebook(){
+        },
+        connectGoogle(){
         }
     }
 });

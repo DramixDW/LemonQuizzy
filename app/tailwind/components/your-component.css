@@ -26,3 +26,8 @@
     transition-duration: 3s;
 }
 
+.stickBottom{
+    margin-top: 20vh;
+    margin-left: 60vw;
+}
+

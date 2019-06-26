@@ -18,10 +18,6 @@ export default DS.JSONAPISerializer.extend({
   serialize(snapshot,options){
     let json = this._super(...arguments);
     console.log(json)
-    if(snapshot.adapterOptions.includes('answer')){
-      //answered = json.data.attributes.answered
-      //json.data.attributes.answered = answered
-    }
 
 
     return json;

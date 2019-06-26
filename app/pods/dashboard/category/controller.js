@@ -17,7 +17,6 @@ export default Controller.extend({
         detract(id){
             let retracted = document.getElementById(id);
             let symbol = document.getElementById(`symbol-${id}`)
-            console.log(retracted.style.height);
             if(retracted.style.maxHeight !== '1500px'){
                 symbol.innerHTML='&or;'
                 retracted.style.maxHeight='1500px';

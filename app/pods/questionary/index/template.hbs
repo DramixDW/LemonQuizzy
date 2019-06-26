@@ -1,11 +1,70 @@
-<div class="w-full ">
+<div class="w-full h-screen">
   <div class=" flex justify-around text-white  bg-green">
-    <h3 class="my-2 py-2">
+    <h2 class="my-2 py-2">
       Questionnaires
-    </h3>
+    </h2>
     <button class="my-2 py-2 px-4 bg-green text-white border border-greenDarker hover:bg-greenDarker">
       {{#link-to "questionary.add" }} Créer un Questionnaires {{/link-to }}
     </button>
   </div>
-
+  <div onclick={{action "detract"}} class="w-full flex justify-around bg-green text-white">
+    <h3 class="p-2">
+      Rechercher
+    </h3>
+    <button id="symbol" class="text-2xl h-auto text-white">
+      >
+    </button>
+  </div>
+  <form id="detracted" class="w-full bg-green text-white retracted">
+    <div class="py-2 flex flex-row justify-around">
+      <label for="searchName" class="font-bold py-2">Nom</label>
+      {{input placeholder="nom du questionnaires" key-up=(action "updateList") value=searchName class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+    </div>
+    <div class="py-2 flex flex-row justify-around">
+      <label for="searchAuthor" class="font-bold py-2">Auteur</label>
+      {{input placeholder="nom de forum" key-up=(action "updateList") value=searchAuthor class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+    </div>
+    <div class="py-2  flex flex-row justify-center">
+      {{input type="checkbox" change=(action "updateList") id="searchTeacher" class="shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}  
+      <label for="searchTeacher" class="font-bold pb-2">Réalisé par un professeur</label>
+    </div>
+  </form>
+  <div class="flex justify-between bg-green text-white fond-bold pt-2">
+    <p class="w-3/5 py-2 text-center">
+      Titre du questionnaire
+    </p>
+    <p class="w-1/5 text-center">
+      Réalisé par un professeur
+    </p>  
+    <p class="w-1/5 text-center">
+      Auteur
+    </p>
+  </div>
+  {{#each this.list as |questionary|}}
+    {{#link-to "questionary.do" questionary.id class="text-black hover:bg-grey"}}
+      <div class="flex p-4 justify-between border border-t-o border-green hover:bg-grey text-back">
+        <h3 class="w-3/5 text-center">
+          {{questionary.title}}
+        </h3>
+        {{#if (eq questionary.author.role "teacher")}}
+          <p class="w-1/5 text-center">
+            oui
+          </p>
+        {{else}}
+          <p class="w-1/5 text-center">
+            non
+          </p>  
+        {{/if}}
+        <p class="w-1/5 text-center">
+          {{questionary.author.username}}
+        </p>
+      </div>
+    {{/link-to}}
+  {{/each}}
+  {{log this.session.user.id}}
+  {{#link-to "questionary.mine" this.session.user.id}}
+    <button class="rounded bg-green text-white absolute z-10 stickBottom p-2">
+      Mes questionnaires
+    </button>
+  {{/link-to}}
 </div>

@@ -29,6 +29,8 @@ Router.map(function() {
     this.route('add');
     this.route('edit',{path:'/edit/:questionary_id'});
     this.route('do',{path:'/:questionary_id'});
+    this.route('mine',{path:'/:user_id'});
+    this.route('pdf',{path:'pdf/:questionary_id'});
   });
 
   this.route('question', function() {
@@ -52,7 +54,7 @@ Router.map(function() {
     this.route('index',{path:'/:forum_id'})
   });
   this.route('message', function() {
-    this.route('user');
+    this.route('user',{path:'/user/:user_id'});
   });
 });
 
