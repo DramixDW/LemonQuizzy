@@ -8,13 +8,13 @@
   <div>
     <form {{action "editProfile" on="submit"}}  class="form" method="post">
       <label for="username">E-mail</label>
-      {{input   placeholder="example@example.com" value=(mut model.email) class=""}}
+      {{input   placeholder=model.email value=email }}
       <label for="password">Surnom</label>
-      {{input  placeholder="username"  value=(mut model.username) class=""}}
+      {{input  placeholder=model.username value=username }}
       <label for="firstname">prénom</label>
-      {{input   placeholder="Jhon" value=(mut model.firstname) class=""}}
+      {{input   placeholder=model.firstname value=firstname }}
       <label for="name">Nom</label>
-      {{input  placeholder="Doe"  value=(mut model.lastname) class=""}}
+      {{input  placeholder=model.lastname  value=lastname }}
 
       {{!-- <input onChange={{action "upload"}} accept="image/png,image/jpeg" type="file"> --}}
 
