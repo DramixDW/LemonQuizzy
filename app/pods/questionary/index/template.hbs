@@ -18,11 +18,11 @@
   <form id="detracted" class="w-full bg-green text-white retracted">
     <div class="py-2 flex flex-row justify-around">
       <label for="searchName" class="font-bold py-2">Nom</label>
-      {{input placeholder="nom du questionnaires" key-up=(action "updateList") value=searchName class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input placeholder="Quizz" key-up=(action "updateList") value=searchName class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
     </div>
     <div class="py-2 flex flex-row justify-around">
       <label for="searchAuthor" class="font-bold py-2">Auteur</label>
-      {{input placeholder="nom de forum" key-up=(action "updateList") value=searchAuthor class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input placeholder="Jhon" key-up=(action "updateList") value=searchAuthor class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
     </div>
     <div class="py-2  flex flex-row justify-center">
       {{input type="checkbox" change=(action "updateList") id="searchTeacher" class="shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}  
@@ -61,10 +61,4 @@
       </div>
     {{/link-to}}
   {{/each}}
-  {{log this.session.user.id}}
-  {{#link-to "questionary.mine" this.session.user.id}}
-    <button class="rounded bg-green text-white absolute z-10 stickBottom p-2">
-      Mes questionnaires
-    </button>
-  {{/link-to}}
 </div>

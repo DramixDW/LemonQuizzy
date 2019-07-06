@@ -55,7 +55,7 @@ module.exports = function(environment) {
   ENV["ember-simple-auth"] = {
     authorizer: "authorizer:token",
     crossOriginWhitelist: ["*"],
-    routeAfterAuthentication: "/profile",
+    routeAfterAuthentication: "index",
     authenticationRoute: "login"
   };
 
@@ -63,8 +63,8 @@ module.exports = function(environment) {
     serverTokenEndpoint: ENV['apiPath']+'/'+ENV['apiNameSpace']+'/auth/login',
     identificationField: 'email',
     passwordField: 'password',
-    tokenPropertyName: 'token.accessToken',
-    refreshTokenPropertyName: 'token.refreshToken',
+    tokenPropertyName: 'data.attributes.access-token',
+    refreshTokenPropertyName: 'data.attributes.refresh-token',
     authorizationPrefix: 'Bearer ',
     authorizationHeaderName: 'Authorization',
     headers: {

@@ -29,7 +29,6 @@ Router.map(function() {
     this.route('add');
     this.route('edit',{path:'/edit/:questionary_id'});
     this.route('do',{path:'/:questionary_id'});
-    this.route('mine',{path:'/:user_id'});
     this.route('pdf',{path:'pdf/:questionary_id'});
   });
 

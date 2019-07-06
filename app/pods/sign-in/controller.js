@@ -7,7 +7,7 @@ export default Controller.extend({
     getUser: service("get-user"),
     store: service(),
     validateEmail(value){
-        let regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
+        let regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
         return value.match(regexEmail)
     },
     validateLength(value,min,max){
@@ -21,12 +21,11 @@ export default Controller.extend({
                 return false;
             }
             this.get('session').authenticate('authenticator:jwt', { email: identification, password: password })
-                .catch(() => {
-                    this.set('errorMessage', "Wrong password or username");
+                .catch( err  => {
+                    this.set('errorMessage', err.json.errors[0].detail);
                     return false;
-                }).then(() => {
+                }).then(response => {
                     _this.get('getUser')._scope(_this.get('session.data.authenticated.tokenData.sub'))
-                    this.get('router').transitionTo('index');
                 })
         },
         connectFacebook(){
