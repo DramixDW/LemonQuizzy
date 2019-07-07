@@ -24,7 +24,8 @@ export default Controller.extend({
                 .catch( err  => {
                     this.set('errorMessage', err.json.errors[0].detail);
                     return false;
-                }).then(response => {
+                }).then(() => {
+                    console.log(_this.get('session.data.authenticated.tokenData.sub'));
                     _this.get('getUser')._scope(_this.get('session.data.authenticated.tokenData.sub'))
                 })
         },

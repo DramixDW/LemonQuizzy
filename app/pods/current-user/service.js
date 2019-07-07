@@ -10,7 +10,9 @@ export default Service.extend({
   load() {
     let userId = this.get('session.data.authenticated.tokenData.sub');
     if (!isEmpty(userId)) {
-      return this.store.findRecord('user', userId).then((user) => {
+      return this.store.findRecord('user', userId,{
+        include:'avatar'
+      }).then((user) => {
         this.set('session.user', {role: user.role, email: user.email, firstname: user.firstname, lastname: user.lastname, username: user.username, 'created-at': user.get('created-at'), avatar: user.avatar.get('filename')});
       });
     } else {

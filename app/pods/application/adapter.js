@@ -51,9 +51,12 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin,{
     else return this._super(...arguments);
   },
   urlForQuery(query, modelName) {
-    let baseUrl = this.buildURL();
-    console.log(query)
-    return `http://localhost:8001/api/v1/messages/fromUser`;
+    let baseUrl = this.buildURL(modelName,query.id);
+    query.id= undefined
+    switch(modelName){
+      case 'message':
+        return baseUrl
+    }
   },
   urlForFindRecord(id, modelName, snapshot) {
     let baseUrl = this.buildURL(modelName, id, snapshot);

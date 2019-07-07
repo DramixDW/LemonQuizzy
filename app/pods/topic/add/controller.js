@@ -15,7 +15,7 @@ export default Controller.extend({
                 content: this.get('content'),
                 category: category
             });
-            topic.save( { adapterOptions: category.id });
+            topic.save();
         }
     }
 });

@@ -14,7 +14,9 @@ export default Service.extend({
     },
     _scope(sub){
         let _this = this;
-        this.store.findRecord('user', sub).then(function(user){
+        this.store.findRecord('user', sub ,{
+            include : 'avatar'
+        }).then(function(user){
             _this.set('session.user', {role: user.role, email: user.email, firstname: user.firstname, lastname: user.lastname, username: user.username, 'created-at': user.get('created-at'), avatar: user.avatar.get('filename') });
         });
         if (!isEmpty(this.get("session.data.authenticated.Token"))) {

@@ -8,9 +8,10 @@ export default Controller.extend({
     actions: {
         Answer(topic) {
             let post = this.store.createRecord("post", {
-                content: this.get('content')
+                content: this.get('content'),
+                topic : topic
             });
-            post.save( { adapterOptions: topic.id });
+            post.save( );
         }
     }
 });

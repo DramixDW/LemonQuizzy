@@ -1,7 +1,9 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-    model(){
-        return this.store.findAll('category'); 
+    model(params){
+        return this.store.findRecord('forum',params.forum_id,{
+            include :'categories'
+        }); 
     }
 });
