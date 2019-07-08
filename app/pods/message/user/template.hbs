@@ -1,5 +1,17 @@
-<div class="w-full bg-green text-white">
-    <h2>
-      Conversation avec {{this.model.sender.username}}
-    </h2>
+<div class="w-full bg-green text-white py-2 flex justify-around">
+  <h2>
+    Conversation avec {{user.username}}
+  </h2>
 </div>
+{{#each this.model as |message|}}
+  <div class="flex">
+    <div class="w-full py-2 flex {{if (eq user.id message.sender.id) "justify-start" "justify-end"}}">
+      {{#if (eq user.id message.sender.id)}}
+        <img src="http://localhost:8001/static/{{user.avatar.filename}}" alt="{{user.username}} profile picture" class="rounded-full w-16 h-16 ml-1/20">
+      {{/if}}
+      <p class="inline-block p-4 border rounded mr-1/20">
+        {{message.content}}
+      </p>
+    </div>    
+  </div>
+{{/each}}
