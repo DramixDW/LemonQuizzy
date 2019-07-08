@@ -2,12 +2,6 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
   time: null,
-  options: {
-    dropdown: true,
-    timeFormat: 'HH:mm',
-    interval: 15,
-    maxHour: 3
-  },
 
   actions: {
     onChange(selectedTime) {

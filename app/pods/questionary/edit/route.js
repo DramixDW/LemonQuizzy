@@ -7,7 +7,7 @@ export default Route.extend({
       include: 'questions'
     });
   },
-  setupController(controller, model) {
+  setupController(controller) {
     controller.set('QId', this.get('Qid'));
   }
 });

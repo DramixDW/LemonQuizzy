@@ -54,18 +54,19 @@ export default Controller.extend({
         Quespool = elem;
       }
     });
-    console;
+    let answerQcm = [];
+    let answersNumber;
+    let textWithGaps;
+    let text;
     switch (name) {
       case "normal":
-        let answerNormal = document.getElementById(Qnum).value;
         answered = {
-          value: answerNormal
+          value: document.getElementById(Qnum).value
         };
         break;
       case "qcm":
-        let holeNumber = question.get('options.answers').length;
-        let answerQcm = [];
-        for (let i = 0; i < holeNumber; i++) {
+        answersNumber = question.get('options.answers').length;
+        for (let i = 0; i < answersNumber; i++) {
           let checked = document.getElementById(`${Qnum}-answer-${i}`).checked;
           if (checked) answerQcm.push(document.getElementById(`${Qnum}-label-${i}`).innerHTML)
         }
@@ -74,8 +75,8 @@ export default Controller.extend({
         };
         break;
       case "text_has_gaps":
-        let textWithGaps = Quespool.answer.answer;
-        let text = "";
+        textWithGaps = Quespool.answer.answer;
+        text = "";
         for (let i = 0; i < textWithGaps.length; i++) {
           if (textWithGaps[i] === "") text += document.getElementById(`${Qnum}-answer-${i}`).value + " ";
           else text += textWithGaps[i] + " "
@@ -85,11 +86,9 @@ export default Controller.extend({
         };
         break;
       case "math":
-        let answerMath = document.getElementById(Qnum).value;
         answered = {
-          value: parseInt(answerMath)
+          value: parseInt(document.getElementById(Qnum).value)
         };
-        console.log(answered);
         break;
     }
     let questionPool = this.store.createRecord('question');
@@ -108,23 +107,14 @@ export default Controller.extend({
       if (this.pageNum === this.pageTot) return;
       else this.pageNum++;
       this.updateCount();
-      try {
-        this.switchQuestion(true);
-      } catch (error) {
-        console.log(error);
-      }
+      this.switchQuestion(true);
       this.sendAnswer(false)
     },
     validate: function () {
       this.sendAnswer(true);
       let questionary = this.store.createRecord('questionary');
       questionary.set('title', 'banana');
-      console.log(questionary);
-      let meta;
-      questionary.save({adapterOptions: `answer/${this.QuestionaryID}`}).then(answer => {
-        let meta = answer;
-        console.log(answer);
-      });
+      questionary.save({adapterOptions: `answer/${this.QuestionaryID}`})
     }
   }
 

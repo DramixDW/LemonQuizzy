@@ -7,14 +7,14 @@
       {{#link-to "questionary.add" }} Créer un Questionnaires {{/link-to }}
     </button>
   </div>
-  <div onclick={{action "detract"}} class="w-full flex justify-around bg-green text-white">
+  <button onclick={{action "detract"}} class="w-full flex justify-around bg-green text-white">
     <h3 class="p-2">
       Rechercher
     </h3>
-    <button id="symbol" class="text-2xl h-auto text-white">
+    <p id="symbol" class="text-2xl h-auto text-white">
       >
-    </button>
-  </div>
+    </p>
+  </button>
   <form id="detracted" class="w-full bg-green text-white retracted">
     <div class="py-2 flex flex-row justify-around">
       <label for="searchName" class="font-bold py-2">Nom</label>

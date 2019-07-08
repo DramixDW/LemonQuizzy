@@ -7,19 +7,19 @@
   {{#each this.model.currentpoolquestions as |poolQuestion index|}}
     {{#if (eq poolQuestion.question.questiontype.name "normal")}}
       <Normal @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}}
-              class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
+              class="{{if (not-eq  index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "qcm")}}
       <Qcm @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}}
-           class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
+           class="{{if (not-eq  index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "text_has_gaps")}}
       <Hole @question={{poolQuestion.question}} @QPool={{poolQuestion}} id="question-{{index}}" @indexQ={{index}}
-            class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
+            class="{{if (not-eq  index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "math")}}
       <Math @question={{poolQuestion.question}} @QPool={{poolQuestion}}  id="question-{{index}}" @indexQ={{index}}
-            class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
+            class="{{if (not-eq  index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
   {{/each}}
 </div>

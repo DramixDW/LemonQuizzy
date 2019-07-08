@@ -11,14 +11,14 @@
   </div>
   <div>
     {{#each this.model as |forum|}}
-      <div class=" flex justify-around text-white  bg-green" onclick={{action "detract" forum.id}}>
+      <button class=" flex justify-around text-white  bg-green" onclick={{action "detract" forum.id}}>
         <h4 class="my-2 py-2">
           {{forum.title}}
         </h4>
         <p id="symbol-{{forum.id}}" class="py-2 text-2xl">
           >
         </p>
-      </div>
+      </button>
       <div class="retracted" id={{forum.id}} >
         {{#each forum.categories as |category|}}
           <div class="flex justify-around border border-green border-t-0 p-4">

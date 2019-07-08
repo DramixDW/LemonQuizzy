@@ -14,14 +14,6 @@ export default DS.JSONAPISerializer.extend({
     return result;
   },
 
-  serialize(snapshot, options) {
-    let json = this._super(...arguments);
-    console.log(json);
-
-
-    return json;
-  },
-
 
   payloadKeyFromModelName(modelName) {
     return underscore(modelName);

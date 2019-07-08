@@ -5,8 +5,5 @@ export default Route.extend({
     return this.store.findAll('message', {
       include: 'receiver,sender,receiver.avatar,sender.avatar'
     })
-  },
-  setupController(controller, model) {
-    this._super(...arguments);
   }
 });

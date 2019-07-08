@@ -6,9 +6,9 @@ export default Route.extend({
       include: 'forum'
     });
   },
-  setupController(controller, model) {
+  setupController(controller) {
     this._super(...arguments);
     let forum = this.store.findAll('forum');
-    Ember.set(controller, 'forum', forum);
+    controller.set('forum', forum);
   }
 });

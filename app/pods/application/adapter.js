@@ -12,11 +12,11 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin, {
     };
   }),
   urlForCreateRecord(modelName, snapshot) {
-    console.log(snapshot.adapterOptions);
     if (snapshot.adapterOptions === 'register') return this._super(...arguments).replace('users', '') + `auth/register`;
     if (snapshot.adapterOptions !== undefined && snapshot.adapterOptions.includes('admin')) {
       let routeInfo = snapshot.adapterOptions.split('/');
-      let pluralizedModel = this._super(...arguments).match(/\/[^\/]+$/);
+      let regexDeleteEnd= new RegExp('/[^/]+$');
+      let pluralizedModel = this._super(...arguments).match(regexDeleteEnd);
       return this._super(...arguments).replace(pluralizedModel, `/admin/${pluralizedModel}/${routeInfo[1]}`)
 
     }
@@ -27,8 +27,9 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin, {
     let route = this._super(...arguments);
     if (snapshot.adapterOptions !== undefined && snapshot.adapterOptions.includes('admin')) {
       let routeInfo = snapshot.adapterOptions.split('/');
-      route = route.replace(/\/[^\/]+$/, '');
-      let pluralizedModel = route.match(/\/[^\/]+$/);
+      let regexDeleteEnd= new RegExp('/[^/]+$');
+      route = route.replace(regexDeleteEnd, '');
+      let pluralizedModel = route.match(regexDeleteEnd);
       if (routeInfo[1]) return route.replace(pluralizedModel, `/admin/${pluralizedModel}/${routeInfo[1]}`);
       else return route.replace(pluralizedModel, `/admin${pluralizedModel}/${id}`)
 
@@ -38,11 +39,11 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin, {
   },
   urlForDeleteRecord(id, modelName, snapshot) {
     let route = this._super(...arguments);
-    console.log(snapshot.adapterOptions);
     if (snapshot.adapterOptions !== undefined && snapshot.adapterOptions.includes('admin')) {
       let routeInfo = snapshot.adapterOptions.split('/');
-      route = route.replace(/\/[^\/]+$/, '');
-      let pluralizedModel = route.match(/\/[^\/]+$/);
+      let regexDeleteEnd= new RegExp('/[^/]+$');
+      route = route.replace(regexDeleteEnd,'');
+      let pluralizedModel = route.match(regexDeleteEnd);
       if (routeInfo[1]) return route.replace(pluralizedModel, `/admin/${pluralizedModel}/${routeInfo[1]}`);
       else return route.replace(pluralizedModel, `/admin${pluralizedModel}/${id}`)
 
@@ -60,7 +61,8 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin, {
   },
   urlForFindRecord(id, modelName, snapshot) {
     let baseUrl = this.buildURL(modelName, id, snapshot);
-    if (snapshot.adapterOptions !== undefined) return `${baseUrl.replace(/\/[^\/]+$/, "")}/${snapshot.adapterOptions}/${id}`;
+    let regexDeleteEnd= new RegExp('/[^/]+$');
+    if (snapshot.adapterOptions !== undefined) return `${baseUrl.replace(regexDeleteEnd, "")}/${snapshot.adapterOptions}/${id}`;
     else return baseUrl
     //return `${baseUrl}/users/${snapshot.adapterOptions.user_id}/playlists/${id}`;
   }
