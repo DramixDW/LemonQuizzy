@@ -1,21 +1,21 @@
-.form{
-    @apply p-4;
+.form {
+  @apply p-4;
 }
 
-.form label{
-    @apply block .my-2 mx-3 .text-xl;
+.form label {
+  @apply block my-2 mx-3 text-xl;
 }
 
 
-.form input,textarea{
-    @apply shadow appearance-none border rounded w-full py-2 px-3  mb-3 leading-tight  ;
+.form input, textarea {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight ;
 }
 
-.form input:focus{
-    @apply outline-none shadow-outline;
+.form input:focus {
+  @apply outline-none shadow-outline;
 }
 
-.formBtn{
-    @apply .bg-green .text-white .p-2 .rounded ;
+.formBtn {
+  @apply bg-green text-white p-2 rounded ;
 }
 

@@ -18,14 +18,17 @@
   <form id="detracted" class="w-full bg-green text-white retracted">
     <div class="py-2 flex flex-row justify-around">
       <label for="searchName" class="font-bold py-2">Nom</label>
-      {{input placeholder="Quizz" key-up=(action "updateList") value=searchName class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input placeholder="Quizz" key-up=(action "updateList") value=searchName
+              class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
     </div>
     <div class="py-2 flex flex-row justify-around">
       <label for="searchAuthor" class="font-bold py-2">Auteur</label>
-      {{input placeholder="Jhon" key-up=(action "updateList") value=searchAuthor class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input placeholder="Jhon" key-up=(action "updateList") value=searchAuthor
+              class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
     </div>
     <div class="py-2  flex flex-row justify-center">
-      {{input type="checkbox" change=(action "updateList") id="searchTeacher" class="shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}  
+      {{input type="checkbox" change=(action "updateList") id="searchTeacher"
+              class="shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
       <label for="searchTeacher" class="font-bold pb-2">Réalisé par un professeur</label>
     </div>
   </form>
@@ -35,7 +38,7 @@
     </p>
     <p class="w-1/5 text-center">
       Réalisé par un professeur
-    </p>  
+    </p>
     <p class="w-1/5 text-center">
       Auteur
     </p>
@@ -53,7 +56,7 @@
         {{else}}
           <p class="w-1/5 text-center">
             non
-          </p>  
+          </p>
         {{/if}}
         <p class="w-1/5 text-center">
           {{questionary.author.username}}

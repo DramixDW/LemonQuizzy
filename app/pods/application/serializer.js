@@ -1,6 +1,5 @@
 import DS from 'ember-data';
-import { underscore } from '@ember/string';
-
+import {underscore} from '@ember/string';
 
 
 export default DS.JSONAPISerializer.extend({
@@ -15,15 +14,15 @@ export default DS.JSONAPISerializer.extend({
     return result;
   },
 
-  serialize(snapshot,options){
+  serialize(snapshot, options) {
     let json = this._super(...arguments);
-    console.log(json)
+    console.log(json);
 
 
     return json;
   },
 
-  
+
   payloadKeyFromModelName(modelName) {
     return underscore(modelName);
   },

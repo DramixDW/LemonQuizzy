@@ -3,10 +3,10 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 import {inject as service} from "@ember/service"
 
 export default Route.extend(ApplicationRouteMixin, {
-    session: service(),
-    beforeModel(){
-        if(this.get('session.isAuthenticated')){
-            this.transitionTo('index');
-        }
+  session: service(),
+  beforeModel() {
+    if (this.get('session.isAuthenticated')) {
+      this.transitionTo('index');
     }
+  }
 });

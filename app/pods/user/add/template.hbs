@@ -3,24 +3,31 @@
     Inscription
   </h3>
   <div>
-    <form action=""  class="form" method="post">
+    <form action="" class="form" method="post">
       <label for="username">E-mail</label>
-      {{input  required=true placeholder="example@example.com" value=email class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input  required=true placeholder="example@example.com" value=email
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
       <label for="password">Surnom</label>
-      {{input required=true placeholder="username"  value=username class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input required=true placeholder="username"  value=username
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
       <label for="firstname">prénom</label>
-      {{input  required=true placeholder="Jhon" value=firstname class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input  required=true placeholder="Jhon" value=firstname
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
       <label for="name">Nom</label>
-      {{input required=true placeholder="Doe"  value=name class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input required=true placeholder="Doe"  value=name
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
       <label for="password">Mot de passe</label>
-      {{input  required=true placeholder="Enter Password" type="password" value=password class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input  required=true placeholder="Enter Password" type="password" value=password
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
       <label for="role">rôle</label>
-      {{input  required=true placeholder="Enter Password" type="password" value=role class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input  required=true placeholder="Enter Password" type="password" value=role
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
       <label for="passwordConfirm">Confirmation du mot de passe</label>
-      {{input required=true placeholder="Enter same Password" type="password" value=passwordConfirm class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input required=true placeholder="Enter same Password" type="password" value=passwordConfirm
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
       <button {{action "signUp" }}  class="formBtn">
         Inscription
-	     </button>
+      </button>
     </form>
     <div class="text-red">{{errorMessage}}</div>
   </div>

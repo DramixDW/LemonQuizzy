@@ -7,11 +7,12 @@
   <div class="flex">
     <div class="w-full py-2 flex {{if (eq user.id message.sender.id) "justify-start" "justify-end"}}">
       {{#if (eq user.id message.sender.id)}}
-        <img src="http://localhost:8001/static/{{user.avatar.filename}}" alt="{{user.username}} profile picture" class="rounded-full w-16 h-16 ml-1/20">
+        <img src="http://localhost:8001/static/{{user.avatar.filename}}" alt="{{user.username}} profile picture"
+             class="rounded-full w-16 h-16 ml-1/20">
       {{/if}}
       <p class="inline-block p-4 border rounded mr-1/20">
         {{message.content}}
       </p>
-    </div>    
+    </div>
   </div>
 {{/each}}

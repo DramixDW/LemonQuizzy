@@ -1,20 +1,21 @@
 <div class="w-screen">
   <div class="flex  justify-between mx-1/10 w-4/5 ">
     <h2 class="py-4  font-medium">
-        {{question.title}} 
+      {{question.title}}
     </h2>
     <h2 class="font-bold w-1/5 text-2xl py-4 text-right">
-        /{{question.good_answer_value}}
+      /{{question.good_answer_value}}
     </h2>
   </div>
   <form class="w-4/5 mx-1/10 py-4 text-center">
     {{#each QPool.answer.answer as |text index|}}
       {{#if (eq text "")}}
-        {{input  required=true placeholder="Ma réponse" id=(hole-name indexQ index) class="inline-block w-95 shadow appearance-none border rounded text-grey-darker  focus:outline-none focus:shadow-outline"}}
+        {{input  required=true placeholder="Ma réponse" id=(hole-name indexQ index)
+                 class="inline-block w-95 shadow appearance-none border rounded text-grey-darker  focus:outline-none focus:shadow-outline"}}
       {{else}}
         <p class="inline-block">
-            {{text}}
-        </p>    
+          {{text}}
+        </p>
       {{/if}}
     {{/each}}
   </form>

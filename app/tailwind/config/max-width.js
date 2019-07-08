@@ -14,7 +14,7 @@
 |
 */
 
- export default {
+export default {
   'xs': '20rem',
   'sm': '30rem',
   'md': '40rem',

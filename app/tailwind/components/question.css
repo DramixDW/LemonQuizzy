@@ -1,23 +1,28 @@
 
-.base{
-    display: none ;
+.base {
+  display: none;
 }
-.normal{
-    display: none ;
+
+.normal {
+  display: none;
 }
-.qcm{
-    display: none ;
+
+.qcm {
+  display: none;
 }
-.text_has_gaps{
-    display: none ;
+
+.text_has_gaps {
+  display: none;
 }
-.label{
-    display: none ;
+
+.label {
+  display: none;
 }
-.math{
-    display: none ;
+
+.math {
+  display: none;
 }
 
 .trans-smooth {
-    transition:width 2s ease;
+  transition: width 2s ease;
 }

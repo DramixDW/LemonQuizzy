@@ -17,7 +17,7 @@
 |
 */
 
- export default {
+export default {
   'sans': [
     'system-ui',
     'BlinkMacSystemFont',

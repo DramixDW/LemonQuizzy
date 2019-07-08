@@ -16,22 +16,22 @@
 }
 */
 
-.wrapped{
-    overflow-wrap: break-word;
+.wrapped {
+  overflow-wrap: break-word;
 }
 
-.retracted{
-    max-height : 0px;
-    overflow: hidden;
-    transition-duration: 3s;
+.retracted {
+  max-height: 0px;
+  overflow: hidden;
+  transition-duration: 3s;
 }
 
-.stickBottom{
-    margin-top: 20vh;
-    margin-left: 60vw;
+.stickBottom {
+  margin-top: 20vh;
+  margin-left: 60vw;
 }
 
-#symbol{
-    transition-duration: 0.5s;
+#symbol {
+  transition-duration: 0.5s;
 }
 

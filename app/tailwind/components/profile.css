@@ -1,7 +1,7 @@
-.profile-title{
-    @apply font-bold my-4 ml-4;
+.profile-title {
+  @apply font-bold my-4 ml-4;
 }
 
-.profile-input{
-    @apply ml-4;
+.profile-input {
+  @apply ml-4;
 }

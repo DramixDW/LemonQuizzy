@@ -1,67 +1,68 @@
-a{
-	@apply .text-white .no-underline ;
+a {
+  @apply text-white no-underline ;
 }
 
-.header{
-  @apply flex justify-between .bg-green text-white w-full;
-	
+.header {
+  @apply flex justify-between bg-green text-white w-full;
+
 }
 
-.header a{
-		@apply .text-white .no-underline ;
+.header a {
+  @apply text-white no-underline ;
 }
 
-.header-info{
-		@apply flex .flex-wrap ;
-}
-.header-title{
-  @apply .m-4 .self-center;
+.header-info {
+  @apply flex flex-wrap ;
 }
 
-.header-slogan{
-  @apply hidden .bg-green .p-4;
-	font-size: 1.5rem;
+.header-title {
+  @apply m-4 self-center;
 }
 
-.logo{
-		@apply m-4;
-		height : 3rem;
-		width : 3rem;
+.header-slogan {
+  @apply hidden bg-green p-4;
+  font-size: 1.5rem;
 }
 
-.navbar{
-	@apply .text-white .overflow-hidden .w-full bg-green;
-	max-height:0px;
+.logo {
+  @apply m-4;
+  height: 3rem;
+  width: 3rem;
+}
+
+.navbar {
+  @apply text-white overflow-hidden w-full bg-green;
+  max-height: 0px;
   transition-duration: 1.5s;
 }
 
-.navbar a{
-	@apply .text-white .no-underline ;
+.navbar a {
+  @apply text-white no-underline ;
 }
 
-.navBtn{
- @apply bg-green flex justify-center .text-2xl p-4; 
+.navBtn {
+  @apply bg-green flex justify-center text-2xl p-4;
 }
 
-.navbar button{
-	@apply w-full text-white;
+.navbar button {
+  @apply w-full text-white;
 }
 
-.navBtn:hover{
- @apply bg-greenDarker;
+.navBtn:hover {
+  @apply bg-greenDarker;
 }
 
-@screen md{
-  .navbar{
-	 @apply flex flex-row .justify-between;	
-	 max-height:1000px;
-		
-	}
+@screen md {
+  .navbar {
+    @apply flex flex-row justify-between;
+    max-height: 1000px;
+
+  }
 }
 
 
-@screen lg{
-  .header-slogan{
-    @apply .text-white block;
+@screen lg {
+  .header-slogan {
+    @apply text-white block;
   }
 }

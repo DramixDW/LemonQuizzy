@@ -5,29 +5,30 @@
     </h3>
     {{#link-to "forum.add"}}
       <button class="text-white border border-white p-3">
-          Créer
+        Créer
       </button>
     {{/link-to}}
   </div>
   <form class="flex justify-around bg-green text-white py-2">
     <label for="search" class="font-bold py-2">Search</label>
-    {{input placeholder="nom de forum" key-up=(action "updateList") value=search class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+    {{input placeholder="nom de forum" key-up=(action "updateList") value=search
+            class=" shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
   </form>
   <div>
-      {{#each list as |forum|}}
-        <div class="flex justify-around border border-green border-t-0 p-4">
-          <h3 class="p-2">
-              {{forum.title}}
-          </h3>
-          {{#link-to "forum.edit" forum}}
-            <button class="bg-green p-2 text-white border border-white">
-                Edit
-            </button>
-          {{/link-to}}
-          <button {{action "removeForum" forum.id}} class="bg-green p-2 text-white border border-white">
-              Delete
+    {{#each list as |forum|}}
+      <div class="flex justify-around border border-green border-t-0 p-4">
+        <h3 class="p-2">
+          {{forum.title}}
+        </h3>
+        {{#link-to "forum.edit" forum}}
+          <button class="bg-green p-2 text-white border border-white">
+            Edit
           </button>
-        </div>
-      {{/each}}
+        {{/link-to}}
+        <button {{action "removeForum" forum.id}} class="bg-green p-2 text-white border border-white">
+          Delete
+        </button>
+      </div>
+    {{/each}}
   </div>
 </div>

@@ -10,7 +10,7 @@
   <img src="http://localhost:8001/static/{{session.user.avatar}}" alt="profile pic" class="float-left pr-4 w-200">
   <div>
     <p class="profile-title pt-4">
-    Prénom
+      Prénom
     </p>
     <p class="profile-input">
       {{session.user.firstname}}
@@ -26,7 +26,7 @@
   </div>
   <div>
     <p class="profile-title">
-    Pseudo
+      Pseudo
     </p>
     <p class="profile-input">
       {{session.user.username}}
@@ -34,7 +34,7 @@
   </div>
   <div>
     <p class="profile-title">
-    E-mail
+      E-mail
     </p>
     <p class="profile-input">
       {{session.user.email}}
@@ -42,7 +42,7 @@
   </div>
   <div>
     <p class="profile-title">
-    Profile crée le
+      Profile crée le
     </p>
     <p class="profile-input">
       {{date-format session.user.created-at}}
@@ -58,7 +58,7 @@
     <div class="error">{{errorMessage}}</div>
   {{/if}}
   <div>
-    <form action=""  class="form" method="post">
+    <form action="" class="form" method="post">
       <label for="oldPass">Ancien mot de passe</label>
       {{input  required=true placeholder="Old password" type="password" value=oldPass class=""}}
       <label for="newPassword">Nouveau mot de passe</label>
@@ -67,7 +67,7 @@
       {{input required=true placeholder="New password confirmation" type="password" value=confirmPassword class=""}}
       <button {{action "changePass" }}  class="formBtn">
         Changer de mot de passe
-	     </button>
+      </button>
     </form>
   </div>
 </div>

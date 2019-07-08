@@ -5,7 +5,7 @@
     </h3>
     {{#link-to "category.add"}}
       <button class="text-white border border-white p-3">
-          Créer
+        Créer
       </button>
     {{/link-to}}
   </div>
@@ -23,19 +23,19 @@
         {{#each forum.categories as |category|}}
           <div class="flex justify-around border border-green border-t-0 p-4">
             <h5 class="p-2">
-                {{category.title}}
+              {{category.title}}
             </h5>
             {{#link-to "category.edit" category.id}}
               <button class="bg-green p-2 text-white border border-white">
-                  Editer
+                Editer
               </button>
             {{/link-to}}
             <button {{action "removeCategory" category.id}} class="bg-green p-2 text-white border border-white">
-                Delete
+              Delete
             </button>
           </div>
         {{/each}}
       </div>
-    {{/each}}  
+    {{/each}}
   </div>
 </div>

@@ -1,21 +1,25 @@
 <div>
   <h3 class="text-center text-white  bg-green p-4">
-    {{this.model.title}} 
+    {{this.model.title}}
   </h3>
 </div>
 <div class="flex">
   {{#each this.model.currentpoolquestions as |poolQuestion index|}}
     {{#if (eq poolQuestion.question.questiontype.name "normal")}}
-      <Normal  @question={{poolQuestion.question}} id="question-{{index}}"  @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
+      <Normal @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}}
+              class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "qcm")}}
-      <Qcm  @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
+      <Qcm @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}}
+           class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "text_has_gaps")}}
-      <Hole  @question={{poolQuestion.question}} @QPool={{poolQuestion}} id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden" />
+      <Hole @question={{poolQuestion.question}} @QPool={{poolQuestion}} id="question-{{index}}" @indexQ={{index}}
+            class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "math")}}
-      <Math @question={{poolQuestion.question}} @QPool={{poolQuestion}}  id="question-{{index}}" @indexQ={{index}} class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
+      <Math @question={{poolQuestion.question}} @QPool={{poolQuestion}}  id="question-{{index}}" @indexQ={{index}}
+            class="{{unless (eq index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
   {{/each}}
 </div>

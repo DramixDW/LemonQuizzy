@@ -3,16 +3,18 @@
     Nouveau questionnaire
   </h3>
   <div>
-    <form action="addQuizz"  class="form" method="post">
+    <form action="addQuizz" class="form" method="post">
       <label for="title">Titre</label>
-      {{input  required=true placeholder="My awesome quizz !" value=title class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input  required=true placeholder="My awesome quizz !" value=title
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
       <label for="group">Groupe</label>
-      {{input  placeholder="My group of student"  value=group class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
+      {{input  placeholder="My group of student"  value=group
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
       <label for="timer">Timer</label>
       {{ember-timepicker onChange=(action "onChange") options=options}}
       <button {{action "addQuizz" }}  class="formBtn">
         Créer
-	     </button>
+      </button>
     </form>
     <div class="text-red">{{errorMessage}}</div>
   </div>

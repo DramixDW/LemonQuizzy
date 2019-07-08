@@ -18,7 +18,7 @@ export default {
   'transparent': 'transparent',
   'black': '#22292f',
   'white': '#ffffff',
-  'grey' : '#c2c3c4',
+  'grey': '#c2c3c4',
 
   'orange': '#a4361b',
 
@@ -27,14 +27,13 @@ export default {
   'greenDarker': '#338410',
 
   'blue': '#1b8aa4',
-  'blueElectric' : '#190399',
+  'blueElectric': '#190399',
 
 
   'purple': '#7a1ba4',
 
-  'redLighter':'#ffdddd',
-  'red':'#ff3838',
-
+  'redLighter': '#ffdddd',
+  'red': '#ff3838',
 
 
 };
