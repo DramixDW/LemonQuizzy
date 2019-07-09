@@ -65,5 +65,12 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin, {
     if (snapshot.adapterOptions !== undefined) return `${baseUrl.replace(regexDeleteEnd, "")}/${snapshot.adapterOptions}/${id}`;
     else return baseUrl
     //return `${baseUrl}/users/${snapshot.adapterOptions.user_id}/playlists/${id}`;
+  },
+  urlForFindAll(modelName, snapshot){
+    if (snapshot.adapterOptions !== undefined) return `${this._super(...arguments)}/${snapshot.adapterOptions}`;
+    else return this._super(...arguments)
+  },
+  shouldBackgroundReloadAll(store,snapshot){
+    return false
   }
 });
