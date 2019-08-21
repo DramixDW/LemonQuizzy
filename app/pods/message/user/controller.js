@@ -1,6 +1,5 @@
 import Controller from '@ember/controller';
 import {inject as service} from "@ember/service";
-import route from '../index/route';
 
 
 export default Controller.extend({

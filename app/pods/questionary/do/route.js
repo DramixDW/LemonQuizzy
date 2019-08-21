@@ -3,12 +3,7 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   model(params) {
     this.set('QuestionaryID', params.questionary_id);
-    let pool = this.store.queryRecord('questionarypool', {
-      id: params.questionary_id
-    }).then(pool => {
-      return pool;
-    });
-    return pool;
+    return this.store.createRecord('questionary-pool',params.questionary_id)
   },
   setupController(controller, model) {
     this._super(...arguments);

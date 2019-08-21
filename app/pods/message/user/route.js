@@ -15,7 +15,7 @@ export default Route.extend({
       return pool.toArray();
     })
   },
-  setupController(controller,model) {
+  setupController(controller) {
     this._super(...arguments);
     controller.set('user', this.get('user'));
     controller.set('receiverId',this.get('receiverId'));
