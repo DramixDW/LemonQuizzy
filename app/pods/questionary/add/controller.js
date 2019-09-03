@@ -14,9 +14,9 @@ export default Controller.extend({
           "timer": this.get('time')
         }
       });
-      let nquizz;
       quizz.save().then(data => {
-        nquizz = data;
+        console.log(data)
+        let nquizz = data;
         this.transitionToRoute(`/questionary/edit/${nquizz.id}`);
       });
     }

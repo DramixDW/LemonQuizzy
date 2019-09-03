@@ -2,9 +2,12 @@
   <h2>
     Messagerie
   </h2>
+  <button class="border border-greenDarker text-white py-2">
+    Démarrer une conversation
+  </button>
 </div>
 {{#each this.model as |conversation|}}
-  <div class="border border-t-0 border-green py-2">
+  <div class="border border-t-0 border-green p-2">
     {{#if (eq conversation.sender.id session.data.authenticated.tokenData.sub)}}
       {{#link-to "message.user" conversation.receiver.id class="flex justify-around content-center text-black"}}
         <div class=" text-center w-1/3">

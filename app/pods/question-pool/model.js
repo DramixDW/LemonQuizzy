@@ -10,5 +10,6 @@ export default Model.extend({
   answer: DS.attr('raw'),
   isCorrect: DS.attr('boolean'),
   'created-at': DS.attr('date'),
-  'answered-at': DS.attr('date')
+  'answered-at': DS.attr('date'),
+  dynamicValues: DS.attr('raw')
 });

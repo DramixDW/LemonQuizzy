@@ -14,5 +14,5 @@ export default Model.extend({
   answered: DS.attr('raw'),
   questiontype: DS.belongsTo('questiontype'),
   questionary: DS.belongsTo('questionary'),
-  questionpool: DS.belongsTo('questionpool')
+  'question-pool': DS.belongsTo('question-pool')
 });

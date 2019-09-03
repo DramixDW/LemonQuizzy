@@ -3,7 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'lemon-quizzy',
-				podModulePrefix: 'lemon-quizzy/pods',
+		podModulePrefix: 'lemon-quizzy/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',

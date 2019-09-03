@@ -8,10 +8,9 @@
     </h2>
   </div>
   <form class="w-4/5 mx-1/10 py-4 text-center">
-    {{#each QPool.answer.answer as |text index|}}
-      {{#if (eq text "")}}
-        {{input  required=true placeholder="Ma réponse" id=(hole-name indexQ index)
-                 class="inline-block w-95 shadow appearance-none border rounded text-grey-darker  focus:outline-none focus:shadow-outline"}}
+    {{#each QPool.dynamicValues.answer as |text index|}}
+      {{#if (eq text null)}}
+        {{input  required=true placeholder="Ma réponse" id=(hole-name indexQ index) class="inline-block w-95 shadow appearance-none border rounded text-grey-darker  focus:outline-none focus:shadow-outline"}}
       {{else}}
         <p class="inline-block">
           {{text}}

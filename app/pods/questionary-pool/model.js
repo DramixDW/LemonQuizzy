@@ -4,8 +4,8 @@ const {Model} = DS;
 
 export default Model.extend({
   'started-at': DS.attr('date'),
-  answered: DS.attr('boolean'),
+  answered: DS.attr('raw'),
   questionary: DS.belongsTo('questionary'),
-  currentpoolquestions: DS.hasMany('questionpool'),
+  currentpoolquestions: DS.hasMany('question-pool'),
   user: DS.belongsTo('user')
 });

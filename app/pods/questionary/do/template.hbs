@@ -1,24 +1,28 @@
 <div>
   <h3 class="text-center text-white  bg-green p-4">
-    {{this.model.title}}
+    {{this.model.questionary.title}}
   </h3>
 </div>
 <div class="flex">
   {{#each this.model.currentpoolquestions as |poolQuestion index|}}
     {{#if (eq poolQuestion.question.questiontype.name "normal")}}
-      <Normal @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}}
+      <Normal @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}} idQ={{poolQuestion.id}}
               class="{{if (not-eq  index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "qcm")}}
-      <Qcm @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}}
+      <Qcm @question={{poolQuestion.question}} id="question-{{index}}" @indexQ={{index}} idQ={{poolQuestion.id}}
            class="{{if (not-eq  index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "text_has_gaps")}}
-      <Hole @question={{poolQuestion.question}} @QPool={{poolQuestion}} id="question-{{index}}" @indexQ={{index}}
+      <Hole @question={{poolQuestion.question}} @QPool={{poolQuestion}} id="question-{{index}}" @indexQ={{index}} idQ={{poolQuestion.id}}
             class="{{if (not-eq  index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
     {{#if (eq poolQuestion.question.questiontype.name "math")}}
-      <Math @question={{poolQuestion.question}} @QPool={{poolQuestion}}  id="question-{{index}}" @indexQ={{index}}
+      <Math @question={{poolQuestion.question}} @QPool={{poolQuestion}}  id="question-{{index}}" @indexQ={{index}} idQ={{poolQuestion.id}}
+            class="{{if (not-eq  index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
+    {{/if}}
+    {{#if (eq poolQuestion.question.questiontype.name "table")}}
+       <Table @question={{poolQuestion.question}} @QPool={{poolQuestion}}  id="question-{{index}}" @indexQ={{index}} idQ={{poolQuestion.id}}
             class="{{if (not-eq  index 0) "w-0 h-0"}} trans-smooth my-8 overflow-hidden"/>
     {{/if}}
   {{/each}}

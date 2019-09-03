@@ -8,7 +8,7 @@
     </h2>
   </div>
   <form class="w-full ">
-    {{#each question.options.answers as |answer index|}}
+    {{#each question.options.choices as |answer index|}}
       <div class="w-full mx-1/10 w-4/5 text-xl py-1">
         {{input type="checkbox"   id=(answer-name indexQ index) }}
         <label for={{answer-name indexQ index}} id={{label-name indexQ index}} >{{answer}}</label>
