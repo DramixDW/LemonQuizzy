@@ -3,6 +3,6 @@ const { Model } = DS;
 
 export default Model.extend({
   isCorrect: DS.attr('boolean'),
-  'questionary-result': DS.hasMany('questionary-result'),
-  question: DS.hasMany('question')
+  'questionary-result': DS.belongsTo('questionary-result'),
+  question: DS.belongsTo('question')
 });

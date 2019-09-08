@@ -67,7 +67,7 @@ export default Controller.extend({
         answersNumber = question.get('options.choices').length;
         for (let i = 0; i < answersNumber; i++) {
           let checked = document.getElementById(`${Qnum}-answer-${i}`).checked;
-          if (checked)  answerQcm.push(document.getElementById(`${Qnum}-label-${i}`).innerHTML)
+          if (checked)  answerQcm.push(parseInt(i))
         }
         answered = {
           value: answerQcm
@@ -75,13 +75,13 @@ export default Controller.extend({
         break;
       case "text_has_gaps":
         textWithGaps = Quespool.dynamicValues.answer;
-        text = "";
+        let answer = [];
         for (let i = 0; i < textWithGaps.length; i++) {
-          if (textWithGaps[i] === null ) text += document.getElementById(`${Qnum}-answer-${i}`).value + " ";
+          if (textWithGaps[i] === null ) answer.push(document.getElementById(`${Qnum}-answer-${i}`).value);
           else text += textWithGaps[i] + " "
         }
         answered = {
-          value: text
+          value: text.trim()
         };
         break;
       case "math":
@@ -90,16 +90,15 @@ export default Controller.extend({
         };
         break;
       case "table":
-        let value = Qpool.objectAt(3);
-        let array = {};
-        array = value.dynamicValues;
+        let table = Qpool.objectAt(Qnum);
+        let array = {...table.dynamicValues};
         for(let i=0 ; i<array['rows'].length;i++){
           for(let c=0; c<array['rows'][i].length;c++){
             if(array['rows'][i][c] == null) array['rows'][i][c]= document.getElementById(`${Qnum}-${i}-${c}`).value
           }
         }
         answered = {
-          value : array
+          value : array['rows']
         }
         break;
     }
@@ -126,11 +125,12 @@ export default Controller.extend({
     validate:  async function () {
       let Qpool = this.model.currentpoolquestions;
       for(let i=0;i<Qpool.length;i++){
-        console.log(i);
         await this.sendAnswer(i);
       }
       let questionary = this.store.peekRecord('questionary-pool',this.model.id);
       questionary.save();
+      this.transitionToRoute('result');
+
     }
   }
 

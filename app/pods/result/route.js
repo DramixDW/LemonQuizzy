@@ -1,15 +1,10 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-    model() {
-        let results = this.store.findRecord('questionary-result',4, {
-          include: 'question-results,question-results.question',
-        });
-
-        results = results.filter(result =>{
-          return result.questionary.id == 4 && result.user.id == 114
-        })
-
-        return results[results.length-1]
+     async model() {
+        let results = await  this.store.findAll('questionary-result',{
+          include: 'questions_results,questions_results.question',
+        });    
+        return results.get('lastObject')
       }
 });
