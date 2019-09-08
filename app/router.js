@@ -55,7 +55,7 @@ Router.map(function () {
   this.route('message', function () {
     this.route('user', {path: '/user/:user_id'});
   });
-  this.route('result', {path:'/:questionay_id'});
+  this.route('result');
 });
 
 export default Router;
