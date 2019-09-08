@@ -4,10 +4,12 @@ import {inject as service} from "@ember/service";
 export default Controller.extend({
   session: service('session'),
   currentUser: service('current-user'),
-  store: service(),
+  store: service('store'),
+  router : service('router'),
   pageNum: 1,
   toGoNumber: 0,
   PQId : 0,
+
   updateCount: function () {
     let pageCount = document.getElementById('pageCount');
     pageCount.innerHTML = `${this.pageNum}/${this.pageTot}`;
@@ -145,7 +147,7 @@ export default Controller.extend({
 
       questionary.unloadRecord();
 
-      this.transitionToRoute('result');
+      this.router.transitionTo('/result');
     }
 
   }
