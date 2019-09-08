@@ -19,7 +19,7 @@ export default Controller.extend({
     }
   },
   switchQuestion(fromRight) {
-    //pageNum start at 1 but question.index start at 0. Therefore, pageNum is the question at the right and actual question is pagenum -1 
+    //pageNum start at 1 but question.index start at 0. Therefore, pageNum is the question at the right and actual question is pagenum -1
     let toGo;
     let toComeNumber = this.pageNum - 1;
     let toRight = this.pageNum - 2;
@@ -31,7 +31,7 @@ export default Controller.extend({
       toGo = document.getElementById(`question-${this.pageNum}`);
       this.toGoNumber = this.pageNum;
     }
-    
+
     toGo.style.width = "0px";
     toGo.style.height = "0px";
     toCome.style.width = "100vw";
@@ -44,15 +44,18 @@ export default Controller.extend({
     let question;
     let Quespool;
     let Qpool = this.model.currentpoolquestions;
+
     let Q = document.getElementById(`question-${Qnum}`)
     this.PQId = Q.getAttribute("idq");
+
     Qpool.forEach((elem, index) => {
-      if (index == Qnum) {
+      if (index === Qnum) {
         name = elem.question.get('questiontype.name');
         question = elem.get('question');
         Quespool = elem;
       }
     });
+
     let answerQcm = [];
     let answersNumber;
     let textWithGaps;
@@ -99,14 +102,13 @@ export default Controller.extend({
         }
         answered = {
           value : array['rows']
-        }
+        };
         break;
     }
-   this.store.findRecord('question-pool',this.PQId).then(questionPool =>{
-      questionPool.set('answered',answered);
-      questionPool.save();
-    });
 
+    const pool = Qpool.objectAt(Qnum);
+    pool.set('answered',answered);
+    return pool;
   },
   actions: {
     goLeft:  function () {
@@ -118,20 +120,34 @@ export default Controller.extend({
     goRight:   function () {
       if (this.pageNum === this.pageTot) return;
       else this.pageNum++;
+
       this.updateCount();
       this.switchQuestion(true);
-      
+
     },
     validate:  async function () {
       let Qpool = this.model.currentpoolquestions;
-      for(let i=0;i<Qpool.length;i++){
-        await this.sendAnswer(i);
-      }
-      let questionary = this.store.peekRecord('questionary-pool',this.model.id);
-      questionary.save();
-      this.transitionToRoute('result');
 
+      await Promise.all(Qpool.map(async (q,i) => {
+        return (await this.sendAnswer(i)).save()
+      }));
+
+      let questionary = this.store.peekRecord('questionary-pool',this.model.id);
+
+
+      try {
+        await questionary.save();
+      }catch (e) {
+
+      }finally {
+
+      }
+
+      questionary.unloadRecord();
+
+      this.transitionToRoute('result');
     }
+
   }
 
 
