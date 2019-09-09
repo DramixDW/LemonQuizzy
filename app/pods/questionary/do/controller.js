@@ -85,10 +85,9 @@ export default Controller.extend({
         let answer = [];
         for (let i = 0; i < textWithGaps.length; i++) {
           if (textWithGaps[i] === null ) answer.push(document.getElementById(`${Qnum}-answer-${i}`).value);
-          else text += textWithGaps[i] + " "
         }
         answered = {
-          value: text.trim()
+          value: answer
         };
         break;
       case "math":

@@ -7,7 +7,33 @@
        {{answer-value QPool question}}/{{question.good_answer_value}}
     </h2>
   </div>
-  <div class="w-4/5 mx-1/10 py-4 text-center">
+  <form class="w-4/5 mx-1/10 py-4 text-center">
+    {{#each QPool.static-values.answer as |text index|}}
+      {{#if (eq text null)}}
+         <p class="inline-block border text-white">
+           hiddenAnswer
+         </p>
+      {{else}}
+        <p class="inline-block">
+          {{text}}
+        </p>
+      {{/if}}
+    {{/each}}
+  </form>
+  <div class="w-full mx-1/10 w-4/5 text-xl py-1">
+    Vous avez répondu :
+  </div>
+  <div class="w-full mx-1/10 w-4/5 text-xl py-1 {{if QPool.isCorrect "text-green" "text-red"}}">
     {{QPool.answered.value}}
   </div>
+  {{#if (not QPool.isCorrect)}}
+    <div class="w-full mx-1/10 w-4/5 text-xl py-1">
+      La bonne réponse était : 
+    </div>
+    <div class="w-full mx-1/10 w-4/5 text-xl py-1 text-blue">
+      {{#each question.options.holes as |ind|}}
+        {{look-array question.static-answer.answer ind}},
+      {{/each}}
+    </div>
+  {{/if}}
 </div>

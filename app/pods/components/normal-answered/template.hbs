@@ -10,7 +10,15 @@
   <div class="w-full mx-1/10 w-4/5 text-xl py-1">
       Votre réponse :
   </div>
-  <div class="w-full mx-1/10 w-4/5 text-xl py-1">
+  <div class="w-full mx-1/10 w-4/5 text-xl py-1 {{if QPool.isCorrect "text-green" "text-red"}}">
       {{QPool.answered.value}}
   </div>
+  {{#if (not QPool.isCorrect)}}
+    <div class="w-full mx-1/10 w-4/5 text-xl py-1">
+      La bonne réponse était : 
+    </div>
+    <div class="w-full mx-1/10 w-4/5 text-xl py-1 text-blue">
+      {{question.static-answer.answer}}
+    </div>
+  {{/if}}
 </div>

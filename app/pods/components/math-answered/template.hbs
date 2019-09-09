@@ -1,7 +1,7 @@
 <div class="w-screen">
   <div class="flex  justify-between mx-1/10 w-4/5 ">
     <h2 class="py-4  font-medium">
-      {{math-name question.title QPool.static_values}}
+      {{math-name question.title QPool.static-values}}
     </h2>
     <h2 class="font-bold w-1/5 text-2xl py-4 text-right">
       {{answer-value QPool question}}/{{question.good_answer_value}}
@@ -10,7 +10,15 @@
   <div class="w-full mx-1/10 w-4/5 text-xl py-1">
       Votre réponse :
   </div>
-  <div class="w-full mx-1/10 w-4/5 text-xl py-1">
+  <div class="w-full mx-1/10 w-4/5 text-xl py-1 {{if QPool.isCorrect "text-green" "text-red"}}">
       {{QPool.answered.value}}
   </div>
+  {{#if (not QPool.isCorrect)}}
+    <div class="w-full mx-1/10 w-4/5 text-xl py-1">
+      La bonne réponse était : 
+    </div>
+    <div class="w-full mx-1/10 w-4/5 text-xl py-1 text-blue">
+      {{math-answer QPool.static-values.variables question.options.equation}}
+    </div>
+  {{/if}}
 </div>
