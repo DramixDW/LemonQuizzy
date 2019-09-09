@@ -1,0 +1,16 @@
+<div class="w-screen">
+  <div class="flex  justify-between mx-1/10 w-4/5 ">
+    <h2 class="py-4  font-medium">
+      {{math-name question.title QPool.static_values}}
+    </h2>
+    <h2 class="font-bold w-1/5 text-2xl py-4 text-right">
+      {{answer-value QPool question}}/{{question.good_answer_value}}
+    </h2>
+  </div>
+  <div class="w-full mx-1/10 w-4/5 text-xl py-1">
+      Votre réponse :
+  </div>
+  <div class="w-full mx-1/10 w-4/5 text-xl py-1">
+      {{QPool.answered.value}}
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="w-screen">
+  <div class="flex  justify-between mx-1/10 w-4/5 ">
+    <h2 class="py-4  font-medium">
+      {{question.title}}
+    </h2>
+    <h2 class="font-bold w-1/5 text-2xl py-4 text-right">
+      {{answer-value QPool question}}/{{question.good_answer_value}}
+    </h2>
+  </div>
+  <form class="w-screen py-4 mx-1/10">
+    <table>
+      <tr>
+        {{#each question.options.headers as |header|}}
+          <th class="py-2">
+              {{header}}
+          </th>
+        {{/each}}
+      </tr>
+      {{#each QPool.answered.value as |row index|}}
+        <tr>
+            {{#each row as |value indexR|}}
+              {{#if value}}
+                <td class="text-center py-2">
+                    {{value}}
+                </td>
+              {{/if}}
+            {{/each}}
+        </tr>
+      {{/each}}
+    </table>
+  </form>
+</div>
