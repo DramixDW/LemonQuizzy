@@ -10,7 +10,7 @@ module.exports = function(defaults) {
       ],
     },
     'ember-service-worker': {
-      enabled: false
+      enabled: true
     }
   });
 

@@ -6,14 +6,14 @@ export default Controller.extend({
 
   actions: {
     onChange(selectedTime) {
-      this.time = selectedTime;
+      this.set('time',selectedTime);
     },
     addQuizz() {
       let span = this.get('time');
       let options = {};
 
       if (span && span !== -1) {
-        options["timer"] = span;
+        options["timer"] = parseInt(span);
       }
 
       let quizz = this.store.createRecord("questionary", {
