@@ -1,0 +1,22 @@
+{
+  "short_name": "LQuizzy",
+  "name": "LemonQuizzy",
+  "theme_color": "#eb5252",
+  "background_color": "#FFFFFF",
+  "display": "fullscreen",
+  "Scope": "/",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/images/logo.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "assets/images/logo512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/"
+}

@@ -1,4 +1,4 @@
-<div class="">
+<div class="" onload="initPAWA()">
   <div class="header">
     <div class="flex justify-around">
       {{#link-to "index" }}
@@ -33,9 +33,11 @@
       <p class="navBtn">
         {{#link-to "forum" }}Forum {{/link-to }}
       </p>
-      <p class="navBtn">
-        {{#link-to "sign-in" }}Contact {{/link-to }}
-      </p>
+      {{#if deferredPrompt}}
+        <p class="navBtn">
+          <a onclick={{action "installPWA"}} href="#">Install</a>
+        </p>
+      {{/if}}
       <p class="navBtn">
         {{#if session.isAuthenticated}}
           {{#link-to "message" }}Messagerie {{/link-to }}
