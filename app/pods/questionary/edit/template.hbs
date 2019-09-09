@@ -1,3 +1,4 @@
+{{log this.model}}
 <div>
   <h3 class="text-center text-white  bg-green p-4">
     {{this.model.title}} Dashboard
@@ -9,4 +10,16 @@
       </button>
     {{/link-to}}
   </div>
+</div>
+<div>
+  {{#each this.model.questions as |question|}}
+    <div class="border border-green w-full flex  py-2 justify-between">
+      <div>
+        {{question.title}}
+      </div>
+      <button class="border p-2 border-white bg-green text-white">
+        Supprimer
+      </button>
+    </div>
+  {{/each}}
 </div>

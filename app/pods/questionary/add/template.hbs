@@ -28,7 +28,14 @@
             <option value="180">3 heures</option>
             <option value="240">4 heures</option>
         </select>
-      <button {{action "addQuizz" }}  class="formBtn">
+      <label for="forum" class="my-2">Forum</label>
+        <select onchange={{action "onChangeForum" value="target.value" class="my-2"}}>
+            <option disabled selected value="-1"> -- No Forum -- </option>
+            {{#each this.forum as |forum|}}
+              <option value={{forum.id}}>{{forum.title}}</option>
+            {{/each}}
+        </select>
+      <button {{action "addQuizz" }}  class="block formBtn my-2">
         Créer
       </button>
     </form>
