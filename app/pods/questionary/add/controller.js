@@ -6,7 +6,7 @@ export default Controller.extend({
   forumID : null,
   actions: {
     onChange(selectedTime) {
-      this.time = selectedTime;
+      this.set('time',selectedTime);
     },
     onChangeForum(selectedForum){
       this.forumID = selectedForum
@@ -16,7 +16,7 @@ export default Controller.extend({
       let options = {};
       let forum = null;
       if (span && span !== -1) {
-        options["timer"] = span;
+        options["timer"] = parseInt(span);
       }
       if(this.forumID) {
         forum = this.store.peekRecord('forum',this.forumID)
