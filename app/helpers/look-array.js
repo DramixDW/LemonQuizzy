@@ -1,7 +1,11 @@
 import { helper } from '@ember/component/helper';
 
 export function lookArray(params/*, hash*/) {
-  return params[0][params[1]]
+  let arr = params[0];
+  if(!Array.isArray(arr)){
+    arr = arr.split(' ');
+  } 
+  return arr[params[1]]
 }
 
 export default helper(lookArray);

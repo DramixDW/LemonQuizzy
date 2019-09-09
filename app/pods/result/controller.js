@@ -12,7 +12,7 @@ export default Controller.extend({
 
   updateCount: function () {
     let pageCount = document.getElementById('pageCount');
-    pageCount.innerHTML = `${this.pageNum}/${this.pageTot}`;
+    pageCount.innerHTML = `${this.pageNum}/${this.model['questions-results'].length}`;
   },
   setVisibility(name, display) {
     let x = document.getElementsByClassName(name);

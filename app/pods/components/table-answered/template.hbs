@@ -18,7 +18,26 @@
       </tr>
       {{#each QPool.answered.value as |row index|}}
         <tr>
-            {{#each row as |value indexR|}}
+            {{#each row as |value |}}
+              {{#if value}}
+                <td class="text-center py-2 {{if QPool.isCorrect "text-green" "text-red"}}">
+                    {{value}}
+                </td>
+              {{/if}}
+            {{/each}}
+        </tr>
+      {{/each}}
+    </table>
+  </form>
+  {{#if (not QPool.isCorrect)}}
+    <div class="w-full mx-1/10 w-4/5 text-xl py-1">
+      La bonne réponse était : 
+    </div>
+    <div class="w-full mx-1/10 w-4/5 text-xl py-1 text-blue">
+      <table>
+      {{#each question.static-answer.rows as |row |}}
+        <tr>
+            {{#each row as |value |}}
               {{#if value}}
                 <td class="text-center py-2">
                     {{value}}
@@ -28,5 +47,6 @@
         </tr>
       {{/each}}
     </table>
-  </form>
+    </div>
+  {{/if}}
 </div>

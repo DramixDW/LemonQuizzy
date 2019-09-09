@@ -6,6 +6,8 @@ export default Route.extend({
     },
     setupController(controller){
       this._super(...arguments);
+      let forum = this.store.findAll('forum');
+      controller.set('forum', forum);
       controller.set('options',{
           dropdown: true,
           timeFormat: 'HH:mm',
