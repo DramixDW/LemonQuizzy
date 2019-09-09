@@ -1,12 +1,19 @@
 import Controller from '@ember/controller';
 import {inject as service} from "@ember/service";
+import { observer } from '@ember/object';
+import { A } from '@ember/array';
 
 export default Controller.extend({
   session: service('session'),
   currentUser: service('current-user'),
   store: service(),
   typeName: "normal",
+  text_words : A(),
+  text_holes_pos : A(),
   typeId: 0,
+  valueObserver: observer('text_hole', function() {
+    this.set('text_words',this.get('text_hole').match(/\S+/gm));
+  }),
   setVisibility(name, display) {
     let x = document.getElementsByClassName(name);
     for (let i = 0; i < x.length; i++) {
@@ -17,6 +24,12 @@ export default Controller.extend({
     this._super(...arguments);
   },
   actions: {
+    addHole(e) {
+      this.get('text_holes_pos').pushObject({idx : e.srcElement.id,text : e.srcElement.text});
+    },
+    removeHole(e) {
+      this.get('text_holes_pos').removeAt(e.srcElement.id);
+    },
     setSelection(selected) {
       let info = selected.split('-');
       this.set('typeId', parseInt(info[1]));
@@ -30,7 +43,7 @@ export default Controller.extend({
       }
       this.setVisibility(value, 'block');
     },
-    addQuizz() {
+    async addQuizz() {
       let options;
       let answer;
       switch (this.typeName) {
@@ -52,7 +65,7 @@ export default Controller.extend({
           break;
         case "text_has_gaps" :
           options = {
-            holes: parseInt(this.get('number_hole'))
+            holes: this.get('text_holes_pos').toArray().map((e) => parseInt(e.idx))
           };
           answer = {
             answer: this.get('text_hole')
@@ -69,8 +82,8 @@ export default Controller.extend({
           answer = {};
           break;
       }
-      let question_type = this.store.peekRecord('questiontype', this.typeId);
-      let quizz = this.store.peekRecord('questionary',this.get('quizzID'))
+
+      let question_type = await this.store.findRecord('questiontype', this.typeId);
       let question = this.store.createRecord("question", {
         title: this.get("title"),
         good_answer_value: parseInt(this.get('good_answer_value')),
@@ -79,10 +92,9 @@ export default Controller.extend({
         options: options,
         answer: answer,
         questiontype: question_type,
-        questionary : this.store.peekRecord('questionary',this.get('quizzID')),
-        quizz : quizz
+        questionary : await this.store.findRecord('questionary',this.get('quizzID'))
       });
-      question.save();
+      await question.save();
     }
 
   }
