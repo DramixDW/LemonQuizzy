@@ -8,6 +8,9 @@ module.exports = function(defaults) {
       patterns: [
         '/api/v1/(.+)'
       ],
+    },
+    'ember-service-worker': {
+      enabled: false
     }
   });
 

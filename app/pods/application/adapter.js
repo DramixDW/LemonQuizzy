@@ -56,6 +56,8 @@ export default DS.JSONAPIAdapter.extend(TokenAuthorizerMixin, {
     query.id = undefined;
     switch (modelName) {
       case 'message':
+        return baseUrl;
+      case 'questionary':
         return baseUrl
     }
   },

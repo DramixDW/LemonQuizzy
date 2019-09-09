@@ -34,34 +34,55 @@
   </form>
   <div class="flex justify-between bg-green text-white fond-bold pt-2">
     <p class="w-3/5 py-2 text-center">
-      Titre du questionnaire
+        Titre du questionnaire
     </p>
     <p class="w-1/5 text-center">
-      Réalisé par un professeur
+        Réalisé par un professeur
     </p>
     <p class="w-1/5 text-center">
-      Auteur
+        Auteur
     </p>
-  </div>
-  {{#each this.list as |questionary|}}
-    {{#link-to "questionary.do" questionary.id class="text-black hover:bg-grey"}}
+</div>
+{{#each this.list as |questionary|}}
+  {{#link-to "questionary.do" questionary.id class="text-black hover:bg-grey"}}
       <div class="flex p-4 justify-between border border-t-o border-green hover:bg-grey text-back">
-        <h3 class="w-3/5 text-center">
-          {{questionary.title}}
-        </h3>
+          <h3 class="w-3/5 text-center">
+            {{questionary.title}}
+          </h3>
         {{#if (eq questionary.author.role "teacher")}}
-          <p class="w-1/5 text-center">
-            oui
-          </p>
+            <p class="w-1/5 text-center">
+                oui
+            </p>
         {{else}}
-          <p class="w-1/5 text-center">
-            non
-          </p>
+            <p class="w-1/5 text-center">
+                non
+            </p>
         {{/if}}
-        <p class="w-1/5 text-center">
-          {{questionary.author.username}}
-        </p>
+          <p class="w-1/5 text-center">
+            {{questionary.author.username}}
+          </p>
       </div>
+  {{/link-to}}
+{{/each}}
+
+{{#if this.session.data.authenticated.data}}
+    <h2 class="my-2 py-2">
+        Mes questionnaires
+    </h2>
+    <div class="flex justify-between bg-green text-white fond-bold pt-2">
+        <p class="w-3/5 py-2 text-center">
+            Titre du questionnaire
+        </p>
+    </div>
+
+  {{#each this.mylist as |questionary|}}
+    {{#link-to "questionary.do" questionary.id class="text-black hover:bg-grey"}}
+        <div class="flex p-4 justify-between border border-t-o border-green hover:bg-grey text-back">
+            <h3 class="w-3/5 text-center">
+              {{questionary.title}}
+            </h3>
+        </div>
     {{/link-to}}
   {{/each}}
+{{/if}}
 </div>
