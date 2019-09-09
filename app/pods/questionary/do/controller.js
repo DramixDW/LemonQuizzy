@@ -67,7 +67,7 @@ export default Controller.extend({
     switch (name) {
       case "normal":
         answered = {
-          value: document.getElementById(Qnum).value
+          value: document.getElementById(Qnum).value === "" ? null : document.getElementById(Qnum).value
         };
         break;
       case "qcm":
@@ -77,7 +77,7 @@ export default Controller.extend({
           if (checked)  answerQcm.push(parseInt(i))
         }
         answered = {
-          value: answerQcm
+          value: answerQcm.length === 0 ? null : answerQcm
         };
         break;
       case "text_has_gaps":
@@ -93,19 +93,26 @@ export default Controller.extend({
         break;
       case "math":
         answered = {
-          value: parseInt(document.getElementById(Qnum).value)
+          value: document.getElementById(Qnum).value === "" ? null : parseInt(document.getElementById(Qnum).value)
         };
         break;
       case "table":
         let table = Qpool.objectAt(Qnum);
+        let allIsNull = true;
         let array = {...table.dynamicValues};
         for(let i=0 ; i<array['rows'].length;i++){
           for(let c=0; c<array['rows'][i].length;c++){
-            if(array['rows'][i][c] == null) array['rows'][i][c]= document.getElementById(`${Qnum}-${i}-${c}`).value
+            if(array['rows'][i][c] == null) {
+              let val = document.getElementById(`${Qnum}-${i}-${c}`).value;
+              array['rows'][i][c] = val;
+              if (val !== "") {
+                allIsNull = false;
+              }
+            }
           }
         }
         answered = {
-          value : array['rows']
+          value : allIsNull ? null : array['rows']
         };
         break;
     }
