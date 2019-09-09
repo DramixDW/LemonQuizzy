@@ -7,7 +7,12 @@
       {{#link-to "profile.edit"}}Edit {{/link-to }}
     </button>
   </div>
-  <img src="http://localhost:8001/static/{{session.user.avatar}}" alt="profile pic" class="float-left pr-4 w-200">
+  {{#file-upload  name="avatar"
+                  accept="image/*"
+                  onfileadd=(action "changeProfilePicture")}}
+      <img src="http://localhost:8001/static/{{session.user.avatar}}" alt="profile pic" class="float-left pr-4 w-200">
+  {{/file-upload}}
+
   <div>
     <p class="profile-title pt-4">
       Prénom
@@ -48,7 +53,12 @@
       {{date-format session.user.created-at}}
     </p>
   </div>
-
+  {{input value=groupName  required=true placeholder="Group name" type="text" class=""}}
+  {{#file-upload  name="document"
+                  accept="application/*"
+                  onfileadd=(action "registerCSV")}}
+      upload
+  {{/file-upload}}
   <div class=" flex justify-around text-white  bg-green my-4">
     <h3 class="my-2 py-2">
       Changer de mot de passe
@@ -69,5 +79,15 @@
         Changer de mot de passe
       </button>
     </form>
+  </div>
+  <div class="flex justify-around text-white bg-green my-4">
+      <h3 class="my-2 py-2">
+          Mes groupes
+      </h3>
+  </div>
+  <div>
+    {{#each this.model as |group|}}
+        <p>{{group.name}}</p>
+    {{/each}}
   </div>
 </div>

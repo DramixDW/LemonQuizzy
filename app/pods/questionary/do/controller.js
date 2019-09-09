@@ -1,10 +1,12 @@
 import Controller from '@ember/controller';
 import {inject as service} from "@ember/service";
+import printJS from 'print-js'
 
 export default Controller.extend({
   session: service('session'),
   currentUser: service('current-user'),
   store: service('store'),
+  ajax: service(),
   router : service('router'),
   pageNum: 1,
   toGoNumber: 0,
@@ -113,6 +115,15 @@ export default Controller.extend({
     return pool;
   },
   actions: {
+    async pdf() {
+      try {
+        const res = await this.ajax.request(`/api/v1/questionary-pools/print/${this.model.id}`, {
+          method: 'POST'
+        });
+      }catch(e) {
+        window.open('data:application/pdf;base64,' + e);
+      }
+    },
     goLeft:  function () {
       if (this.pageNum === 1) return;
       else this.pageNum--;

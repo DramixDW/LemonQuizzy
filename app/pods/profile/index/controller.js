@@ -4,8 +4,28 @@ import {inject as service} from "@ember/service";
 export default Controller.extend({
   session: service('session'),
   currentUser: service('current-user'),
-  store: service(),
+  upload: service('upload'),
+  store: service('store'),
   actions: {
+    async changeProfilePicture(file) {
+      const userId = this.get('session.data.authenticated.data.relationships.user.data.id');
+      let document = await this.upload.uploadFile(file.blob);
+      let user = this.store.peekRecord('user',userId);
+      user.set('avatar',document);
+      await user.save();
+      this.get('session').set('user.avatar', document.filename);
+    },
+    async registerCSV(file) {
+      if (file) {
+        const newGroup = this.store.createRecord('group');
+        newGroup.set('name',this.get('groupName'));
+        await newGroup.save();
+        file = await this.upload.uploadCustom(file.blob,'/auth/registerCSV','csv',{
+          groups : [newGroup.get('id')]
+        });
+        window.open('data:application/pdf;base64,' + file);
+      }
+    },
     changePass() {
       let pass = this.get('newPassword');
       let oldPass = this.get('oldPass');
