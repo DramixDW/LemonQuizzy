@@ -2,9 +2,6 @@
   <h3 class="text-center text-white  bg-green p-4">
     {{this.model.questionary.title}}
   </h3>
-    <button onclick={{action "pdf"}} class="my-2 py-2 px-4 bg-green text-white border border-greenDarker hover:bg-greenDarker">
-      Format PDF
-    </button>
 </div>
 <div class="flex">
   {{#each this.model.currentpoolquestions as |poolQuestion index|}}
@@ -45,5 +42,8 @@
 <div class="w-screen flex justify-center">
   <button onclick={{action "validate"}} class="bg-green p-4 text-white hover:bg-greenDarker font-bold">
     Valider
+  </button>
+  <button onclick={{action "pdf"}} class="bg-green p-4 text-white mx-2 hover:bg-greenDarker font-bold">
+      Format PDF
   </button>
 </div>
