@@ -8,10 +8,26 @@
       {{input  required=true placeholder="My awesome quizz !" value=title
                class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
       <label for="group">Groupe</label>
-      {{input  placeholder="My group of student"  value=group
-               class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"}}
+      <select onchange={{action "setSelection" value="target.value"}}>
+          <option disabled selected> -- Quizz group -- </option>
+          {{#each this.model as |group|}}
+            {{log group}}
+              <option value={{group.id}}>{{group.name}}</option>
+          {{/each}}
+      </select>
       <label for="timer">Timer</label>
-      {{ember-timepicker onChange=(action "onChange") options=options}}
+        <select onchange={{action "onChange" value="target.value"}}>
+            <option disabled selected value="-1"> -- No time -- </option>
+            <option value="5">5 minutes</option>
+            <option value="10">10 minutes</option>
+            <option value="15">15 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="45">45 minutes</option>
+            <option value="60">1 heure</option>
+            <option value="120">2 heures</option>
+            <option value="180">3 heures</option>
+            <option value="240">4 heures</option>
+        </select>
       <button {{action "addQuizz" }}  class="formBtn">
         Créer
       </button>
