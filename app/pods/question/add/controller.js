@@ -79,6 +79,7 @@ export default Controller.extend({
         options: options,
         answer: answer,
         questiontype: question_type,
+        questionary : this.store.peekRecord('questionary',this.get('quizzID')),
         quizz : quizz
       });
       question.save();

@@ -82,12 +82,20 @@ export default Controller.extend({
         break;
       case "text_has_gaps":
         textWithGaps = Quespool.dynamicValues.answer;
+        let isAnswered = false;
         let answer = [];
         for (let i = 0; i < textWithGaps.length; i++) {
-          if (textWithGaps[i] === null ) answer.push(document.getElementById(`${Qnum}-answer-${i}`).value);
+          if (textWithGaps[i] === null ) {
+            let val = document.getElementById(`${Qnum}-answer-${i}`).value;
+            if (val && val !== "") {
+              isAnswered = true;
+            }
+
+            answer.push(val);
+          }
         }
         answered = {
-          value: answer
+          value: isAnswered ? answer : null
         };
         break;
       case "math":
