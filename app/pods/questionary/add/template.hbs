@@ -28,6 +28,14 @@
             <option value="180">3 heures</option>
             <option value="240">4 heures</option>
         </select>
+      <label for="color">Couleur</label>
+      <select onchange={{action "onChangeColor" value="target.value"}}>
+            <option disabled selected value="-1"> -- Pas de couleur -- </option>
+            <option value="orange">orange</option>
+            <option value="blue">bleu</option>
+            <option value="green">vert</option>
+            <option value="purple">violet</option>
+      </select>
       <label for="forum" class="my-2">Forum</label>
         <select onchange={{action "onChangeForum" value="target.value" class="my-2"}}>
             <option disabled selected value="-1"> -- No Forum -- </option>
@@ -35,6 +43,12 @@
               <option value={{forum.id}}>{{forum.title}}</option>
             {{/each}}
         </select>
+      {{#if (eq currentUser.session.user.role "teacher")}}
+        <div class="flex py-2">
+          <label for="public" >publique</label>
+          {{input type="checkbox" class="w-auto py-2 my-2 " id="public" }}
+        </div>
+      {{/if}}
       <button {{action "addQuizz" }}  class="block formBtn my-2">
         Créer
       </button>

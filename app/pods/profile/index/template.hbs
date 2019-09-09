@@ -10,7 +10,7 @@
   {{#file-upload  name="avatar"
                   accept="image/*"
                   onfileadd=(action "changeProfilePicture")}}
-      <img src="http://localhost:8001/static/{{session.user.avatar}}" alt="profile pic" class="float-left pr-4 w-200">
+      <img src="http://localhost:8001/static/{{session.user.avatar}}" alt="Click here to add a profile pic" class="float-left pr-4 w-200">
   {{/file-upload}}
 
   <div>
@@ -53,12 +53,16 @@
       {{date-format session.user.created-at}}
     </p>
   </div>
-  {{input value=groupName  required=true placeholder="Group name" type="text" class=""}}
+  <div class="flex justify-around">
+  {{input value=groupName  required=true placeholder="Group name" type="text" class="inline-block shadow appearance-none border rounded text-grey-darker  focus:outline-none focus:shadow-outline"}}
   {{#file-upload  name="document"
                   accept="application/*"
-                  onfileadd=(action "registerCSV")}}
-      upload
+                  onfileadd=(action "registerCSV") class="bg-green text-white py-2 text-center"}}
+
+      Inscrire une liste d'éléve
+    
   {{/file-upload}}
+  </div>
   <div class=" flex justify-around text-white  bg-green my-4">
     <h3 class="my-2 py-2">
       Changer de mot de passe
@@ -87,7 +91,7 @@
   </div>
   <div>
     {{#each this.model as |group|}}
-        <p>{{group.name}}</p>
+        <p class="text-xl py-2">- {{group.name}}</p>
     {{/each}}
   </div>
 </div>

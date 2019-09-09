@@ -19,3 +19,6 @@
   @apply bg-green text-white p-2 rounded ;
 }
 
+#public{
+  width: auto;
+}

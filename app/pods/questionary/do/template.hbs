@@ -1,5 +1,5 @@
 <div>
-  <h3 class="text-center text-white  bg-green p-4">
+  <h3 class="text-center text-white  bg-{{this.model.questionary.options.color}} p-4">
     {{this.model.questionary.title}}
   </h3>
 </div>
@@ -40,10 +40,10 @@
   </button>
 </div>
 <div class="w-screen flex justify-center">
-  <button onclick={{action "validate"}} class="bg-green p-4 text-white hover:bg-greenDarker font-bold">
+  <button onclick={{action "validate"}} class="bg-{{this.model.questionary.options.color}} p-4 text-white  font-bold">
     Valider
   </button>
-  <button onclick={{action "pdf"}} class="bg-green p-4 text-white mx-2 hover:bg-greenDarker font-bold">
+  <button onclick={{action "pdf"}} class="bg-{{this.model.questionary.options.color}} p-4 text-white mx-2  font-bold">
       Format PDF
   </button>
 </div>

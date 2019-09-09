@@ -20,12 +20,16 @@ export default Controller.extend({
       x[i].style.display = display;
     }
   },
+  shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+    return array
+  },
   init() {
     this._super(...arguments);
   },
   actions: {
     addHole(e) {
-      this.get('text_holes_pos').pushObject({idx : e.srcElement.id,text : e.srcElement.text});
+      this.get('text_holes_pos').pushObject({idx: e.srcElement.id, text: e.srcElement.text});
     },
     removeHole(e) {
       this.get('text_holes_pos').removeAt(e.srcElement.id);
@@ -54,14 +58,21 @@ export default Controller.extend({
           };
           break;
         case "qcm" :
+          let goodAnswer = this.get('answer_qcm').split('\n');
+          let choiceArr = this.get('answer_qcm').split('\n').concat(this.get('bad_answer_qcm').split('\n'));
+          choiceArr = this.shuffle(choiceArr);
+          let indexes = [];
+          for (let i = 0; i < goodAnswer.length; i++) {
+            indexes.push(choiceArr.indexOf(goodAnswer[i]));
+          }
           options = {
-            choices: this.get('answer_qcm').split('\n').concat(this.get('bad_answer_qcm').split('\n'))
+            choices: choiceArr
           };
           answer = {
-            answers: this.get('answer_qcm').split('\n')
+            answers: indexes
           };
           break;
-        case "label" :
+        case "table" :
           break;
         case "text_has_gaps" :
           options = {
@@ -72,17 +83,21 @@ export default Controller.extend({
           };
           break;
         case "math" :
+          //x[1-10]
           options = {
-            variables: {
-              "x": [0, 10],
-              "y": [0, 20]
-            },
+            variables: {},
             equation: this.get('formula')
           };
+
+          let unknowns = this.get('unknown').split('\n');
+          for (let val of unknowns) {
+            const [varname, start, end] = val.match(/\w+/g);
+            options.variables[varname] = [parseInt(start), parseInt(end)];
+          }
           answer = {};
+
           break;
       }
-
       let question_type = await this.store.findRecord('questiontype', this.typeId);
       let question = this.store.createRecord("question", {
         title: this.get("title"),
@@ -90,12 +105,11 @@ export default Controller.extend({
         no_answer_value: parseInt(this.get('no_answer_value')),
         bad_answer_value: parseInt(this.get('bad_answer_value')),
         options: options,
-        answer: answer,
+        static_answer: answer,
         questiontype: question_type,
-        questionary : await this.store.findRecord('questionary',this.get('quizzID'))
+        questionary: await this.store.findRecord('questionary', this.get('quizzID'))
       });
       await question.save();
     }
-
   }
 });
