@@ -17,7 +17,7 @@
       <div>
         {{question.title}}
       </div>
-      <button class="border p-2 border-white bg-green text-white">
+      <button onclick={{action "removeQuestion" question.id}} class="border p-2 border-white bg-green text-white">
         Supprimer
       </button>
     </div>

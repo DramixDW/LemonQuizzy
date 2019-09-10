@@ -32,7 +32,8 @@
     </div>
     <div class="w-full mx-1/10 w-4/5 text-xl py-1 text-blue">
       {{#each question.options.holes as |ind|}}
-        {{look-array question.static-answer.answer ind}},
+        {{log question}}
+        {{look-array question.static_answer.answer ind}},
       {{/each}}
     </div>
   {{/if}}

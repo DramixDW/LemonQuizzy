@@ -13,9 +13,10 @@
     </div>  
     {{#each QPool.answered.value as |answer|}}
       <div class="w-full {{if QPool.isCorrect "text-green" "text-red"}}  mx-1/10 w-4/5 text-xl py-1">
-        {{look-array question.options.choices answer}}
+        {{look-array question.options.choices answer question.id}}
       </div>
     {{/each}}
+
   </form>
   {{#if (not QPool.isCorrect)}}
     <div class="w-full mx-1/10 w-4/5 text-xl py-1">

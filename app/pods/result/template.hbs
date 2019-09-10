@@ -2,13 +2,18 @@
     <p class="text-2xl  my-2 text center text-black">
       Vous avez obtenu :
     </p>
-    <p class="text-4xl border my-2 border-green text-center ">
-        {{log model}}
+    <p class="text-4xl border my-2  {{if (success (result-count model.questions-results) (tot model.questions-results) model.questionary.success-level) "border-green text-green" "border-red text-red"}} border-green text-center ">
         {{result-count model.questions-results}}/{{tot model.questions-results}}
     </p>
-    <button class="bg-green text-white my-2 p-2">
-    Voir les détails
-    </button>
+    {{#if (success (result-count model.questions-results) (tot model.questions-results) model.questionary.success-level)}}
+      <p class="text-2xl  my-2 text-center w-full text-green ">
+        Vous avez réussi 
+      </p>
+    {{else}}
+      <p class="text-2xl  my-2 text-center w-full text-red ">
+        Vous avez raté :c
+      </p>
+    {{/if}}
 </div>
 <div>
   <div class="flex">

@@ -9,10 +9,12 @@ export default Controller.extend({
   pageNum: 1,
   toGoNumber: 0,
   PQId : 0,
+  pageTot: null,
 
   updateCount: function () {
     let pageCount = document.getElementById('pageCount');
     pageCount.innerHTML = `${this.pageNum}/${this.model['questions-results'].length}`;
+    if(this.pageTot ===  null )this.pageTot = this.model['questions-results'].length;
   },
   setVisibility(name, display) {
     let x = document.getElementsByClassName(name);

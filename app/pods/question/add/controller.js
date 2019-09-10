@@ -65,6 +65,7 @@ export default Controller.extend({
           for (let i = 0; i < goodAnswer.length; i++) {
             indexes.push(choiceArr.indexOf(goodAnswer[i]));
           }
+          indexes.sort();
           options = {
             choices: choiceArr
           };

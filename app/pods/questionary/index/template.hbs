@@ -76,13 +76,18 @@
     </div>
 
   {{#each this.mylist as |questionary|}}
-    {{#link-to "questionary.do" questionary.id class="text-black hover:bg-grey"}}
-        <div class="flex p-4 justify-between border border-t-o border-green hover:bg-grey text-back">
-            <h3 class="w-3/5 text-center">
-              {{questionary.title}}
-            </h3>
-        </div>
-    {{/link-to}}
+      <div class="flex p-4 justify-between border border-t-o border-green hover:bg-grey text-back">
+        {{#link-to "questionary.do" questionary.id class="w-full text-black hover:bg-grey"}}
+          <h3 class="w-3/5 text-center">
+            {{questionary.title}}
+          </h3>
+        {{/link-to}}
+        {{#link-to "questionary.edit" questionary.id class="bg-green p-4 text-white"}}
+          <button class="text-white">
+            Editer
+          </button>
+        {{/link-to}}
+      </div>
   {{/each}}
 {{/if}}
 </div>

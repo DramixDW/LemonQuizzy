@@ -12,6 +12,8 @@ export default Model.extend({
   results: DS.hasMany('results'),
   options: DS.attr('raw'),
   forum : DS.belongsTo('forum'),
+  'success-level' : DS.attr('number'),
+  successLevel : DS.attr('number'),
   current_questionaries: DS.hasMany('questionary-pool')
 
 });

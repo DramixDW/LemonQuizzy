@@ -6,6 +6,7 @@ export default Controller.extend({
   group : null,
   forumID : null,
   color: null,
+  success : 50,
   currentUser: service('current-user'),
   actions: {
     onChange(selectedTime) {
@@ -16,6 +17,11 @@ export default Controller.extend({
     },
     onChangeColor(selectedColor){
       this.color = selectedColor
+    },
+    onChangeSuccess(selectedSuccess){
+      this.success = parseInt(selectedSuccess)
+      console.log(this.success);
+      console.log(selectedSuccess)
     },
     addQuizz() {
       let span = this.get('time');
@@ -37,7 +43,8 @@ export default Controller.extend({
         title: this.get('title'),
         options,
         group : this.group,
-        forum : forum
+        forum : forum,
+        successLevel : this.success
       });
       quizz.save().then(data => {
         let nquizz = data;
