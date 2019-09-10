@@ -9,6 +9,7 @@ export default Route.extend({
     return this.get('model');
   },
   setupController(controller) {
+    this._super(...arguments);
     controller.set('QId', this.get('Qid'));
     controller.set('model', this.get('model'));
   }

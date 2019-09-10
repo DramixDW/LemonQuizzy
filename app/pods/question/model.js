@@ -10,7 +10,7 @@ export default Model.extend({
   no_answer_value: DS.attr('number'),
   bad_answer_value: DS.attr('number'),
   options: DS.attr('raw'),
-  'static-answer' : DS.attr('raw'),
+  static_answer : DS.attr('raw'),
   answer: DS.attr('raw'),
   answered: DS.attr('raw'),
   questiontype: DS.belongsTo('questiontype'),

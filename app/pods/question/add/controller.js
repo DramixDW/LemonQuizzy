@@ -98,6 +98,7 @@ export default Controller.extend({
 
           break;
       }
+
       let question_type = await this.store.findRecord('questiontype', this.typeId);
       let question = this.store.createRecord("question", {
         title: this.get("title"),
@@ -110,6 +111,8 @@ export default Controller.extend({
         questionary: await this.store.findRecord('questionary', this.get('quizzID'))
       });
       await question.save();
+
+      this.transitionToRoute(`/questionary/edit/${this.get('quizzID')}`);
     }
   }
 });

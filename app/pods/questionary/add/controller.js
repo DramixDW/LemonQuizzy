@@ -31,7 +31,7 @@ export default Controller.extend({
       if(this.forumID) {
         forum = this.store.peekRecord('forum',this.forumID)
       }
-      let checked = document.getElementById(`public`).checked;
+      let checked = document.getElementById(`public`) && document.getElementById(`public`).checked;
       if(checked) this.group = null;
       let quizz = this.store.createRecord("questionary", {
         title: this.get('title'),
