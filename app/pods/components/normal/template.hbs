@@ -7,8 +7,9 @@
       /{{question.good_answer_value}}
     </h2>
   </div>
+  {{log indexQ}}
   <form class="w-screen py-4">
-    {{input  required=true placeholder="Ma réponse" id=indexQ
+    {{input  required=true placeholder="Ma réponse" id=(id-index indexQ)
              class=" mx-1/10 shadow appearance-none border rounded px-3 py-2 w-4/5   text-grey-darker leading-tight focus:outline-none focus:shadow-outline"}}
   </form>
 </div>
